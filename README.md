@@ -6,6 +6,6 @@ En este [repositorio](https://github.com/Diegodesantos1/Paper-Markov) queda resu
 
 <h2 align="center">Parte 1: Ejercicio de Látex</h2>
 
-Hemos traducido el pdf original y lo hemos pasado a Látex, utilizando Overleaf
+Hemos traducido el pdf original y lo hemos pasado a LaTeX, utilizando Overleaf y Replit para hacer el trabajo colaborativo.
 
 <h2 align="center"> Parte 2: Programar Markov</h2>
