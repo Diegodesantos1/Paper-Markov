@@ -1,12 +1,12 @@
 \documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath}
 \usepackage{amsfonts}
-\usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{mhchem}
-\usepackage{stmaryrd}
+\usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{stmaryrd}
 \usepackage[export]{adjustbox}
 \graphicspath{ {./images/} }
 \usepackage{bbold}
@@ -18,7 +18,7 @@
 \author{Borja Bordel $^{1}$, Ramón Alcarria ${ }^{1}$, Diego Sánchez-de-Rivera ${ }^{1}$\\
 ${ }^{1}$ Universidad Politécnica de Madrid,\\
 Madrid, España\\
-bbordel@dit.upm.es, ramon.alcarria@upm.es,diegosanchez@dit.upm.es}
+bbordel@dit.upm.es, ramon.alcarria@upm.es, diegosanchez@dit.upm.es}
 \date{}
 
 
@@ -31,15 +31,39 @@ bbordel@dit.upm.es, ramon.alcarria@upm.es,diegosanchez@dit.upm.es}
 
 \end{abstract}
 
-Palabras clave: Industria 4.0; reconocimiento de patrones; Dynamic Time Warping; Inteligencia artificial; Modelos ocultos de Markov.
+Palabras clave: Industria 4.0; reconocimiento de patrones; Dynamic Time Warping; Inteligencia artificial; Modelos ocultos de Markov(HMM).
 
 \section{Introducción}
-La Industria 4.0 [1] se refiere al uso de Sistemas Ciber-Físicos (uniones de procesos físicos y cibernéticos) [2] como componente tecnológico principal en futuras soluciones digitales, principalmente (pero no solo) en escenarios industriales. Típicamente, la digitalización ha provocado, al final, la sustitución de los mecanismos tradicionales de trabajo por nuevos instrumentos digitales. Por ejemplo, los trabajadores de las cadenas de montaje fueron sustituidos por robots durante la tercera revolución industrial. Sin embargo, algunas aplicaciones industriales no pueden basarse en soluciones tecnológicas, siendo aún imprescindible el trabajo humano [3]. Los productos hechos a mano son un ejemplo de aplicaciones donde la presencia de obras humanas es fundamental. Estos sectores industriales, en cualquier caso, también deben integrarse en la cuarta revolución industrial. De la unión de Traducido del inglés al español. Los Sistemas Ciber-Físicos (CPS) y los humanos actuando como proveedores de servicios (obras activas), surgen los CPS humanizados [4]. En estos nuevos sistemas, se permiten procesos impulsados por humanos [5]; es decir, procesos que son conocidos, ejecutados y gestionados por personas (aunque pueden estar vigilados por mecanismos digitales). Para crear una integración real entre las personas y la tecnología, y mover la ejecución del proceso desde el subsistema social (humanos) al mundo cibernético (componentes de hardware y software), se necesitan técnicas para la extracción de información. Se han reportado muchas soluciones y enfoques diferentes durante los últimos años, pero hoy en día las técnicas de reconocimiento de patrones son las más prometedoras. El uso de Inteligencia Artificial, modelos estadísticos y otros instrumentos similares han permitido un desarrollo real e increíble de soluciones de reconocimiento de patrones, pero aún quedan algunos retos pendientes. En primer lugar, las técnicas de reconocimiento de patrones dependen del dispositivo de hardware subyacente para la captura de información. La estructura y el proceso de aprendizaje cambia si (por ejemplo) en lugar de acelerómetros consideramos sensores infrarrojos. Esto es muy problemático ya que las tecnologías de hardware evolucionan mucho más rápido que las soluciones de software. Y, segundo, hay un límite a la precisión en el proceso de reconocimiento. De hecho, a medida que las acciones humanas se vuelven más complicadas, se requieren más variables y modelos más complejos para reconocerlas. Este enfoque genera grandes problemas de optimización cuyo error residual es mayor a medida que aumenta el número de variables; lo que provoca una disminución en la tasa de reconocimiento de éxito [6]. En conclusión, las matemáticas (no el software, por lo tanto, no depende de la implementación) obligan a una cierta precisión para el proceso de reconocimiento de patrones dadas las acciones a estudiar. Para evitar esta situación, se debe considerar un menor número de variables, pero esto también reduce la complejidad de las acciones que se pueden analizar; una solución que no es aceptable en escenarios industriales donde se desarrollan actividades productivas complejas. Por lo tanto, el objetivo de este artículo es describir un nuevo algoritmo de reconocimiento de patrones que aborde estos dos problemas básicos. El mecanismo propuesto define las acciones como una composición de movimientos simples. Los movimientos simples se reconocen mediante técnicas de deformación dinámica del tiempo (DTW) [7]. Este proceso depende del hardware seleccionado para la captura de información; pero los DTW son muy flexibles y actualizar el repositorio de patrones es suficiente para reconfigurar todo el algoritmo. Luego, las acciones complejas se reconocen como combinaciones de movimientos simples a través de los Modelos Ocultos de Markov (HMM) [8]. Estos modelos son totalmente independientes de las tecnologías de hardware, ya que solo consideran acciones simples. Este enfoque de dos fases también reduce la complejidad de los modelos, aumentando la precisión y la tasa de éxito en el proceso de reconocimiento. El resto del documento está organizado de la siguiente manera: la Sección 2 describe el estado del arte sobre el reconocimiento de patrones para las actividades humanas; la Sección 3 describe la solución propuesta, incluyendo las dos fases definidas; la sección 4 presenta una validación experimental utilizando un escenario real y usuarios finales; y la Sección 5 concluye el documento. 
+La Industria 4.0 [1] se refiere al uso de Sistemas Ciber-Físicos (uniones de procesos físicos y cibernéticos) [2] como componente tecnológico principal en futuras soluciones digitales, principalmente (pero no solo) en escenarios industriales. Típicamente, la digitalización ha provocado, al final, la sustitución de los mecanismos tradicionales de trabajo por nuevos instrumentos digitales. Por ejemplo, los trabajadores de las cadenas de montaje fueron sustituidos por robots durante la tercera revolución industrial. 
+\newline
+
+Sin embargo, algunas aplicaciones industriales no pueden basarse en soluciones tecnológicas, siendo aún imprescindible el trabajo humano [3]. Los productos hechos a mano son un ejemplo de aplicaciones donde la presencia de obras humanas es fundamental. Estos sectores industriales, en cualquier caso, también deben integrarse en la cuarta revolución industrial. De la unión de los Sistemas Ciber-Físicos (CPS) y los humanos actuando como proveedores de servicios (obras activas), surgen los CPS humanizados [4]. En estos nuevos sistemas, se permiten procesos impulsados por humanos [5]; es decir, procesos que son conocidos, ejecutados y gestionados por personas (aunque pueden estar vigilados por mecanismos digitales). 
+\newline
+
+Para crear una integración real entre las personas y la tecnología, y mover la ejecución del proceso desde el subsistema social (humanos) al mundo cibernético (componentes de hardware y software), se necesitan técnicas para la extracción de información. Se han reportado muchas soluciones y enfoques diferentes durante los últimos años, pero hoy en día las técnicas de reconocimiento de patrones son las más prometedoras. 
+\newline
+
+El uso de Inteligencia Artificial, modelos estadísticos y otros instrumentos similares han permitido un desarrollo real e increíble de soluciones de reconocimiento de patrones, pero aún quedan algunos retos pendientes. 
+\newline
+
+En primer lugar, las técnicas de reconocimiento de patrones dependen del dispositivo de hardware subyacente para la captura de información. La estructura y el proceso de aprendizaje cambia si (por ejemplo) en lugar de acelerómetros consideramos sensores infrarrojos. Esto es muy problemático ya que las tecnologías de hardware evolucionan mucho más rápido que las soluciones de software. 
+\newline
+
+Y, segundo, hay un límite a la precisión en el proceso de reconocimiento. De hecho, a medida que las acciones humanas se vuelven más complicadas, se requieren más variables y modelos más complejos para reconocerlas. Este enfoque genera grandes problemas de optimización cuyo error residual es mayor a medida que aumenta el número de variables; lo que provoca una disminución en la tasa de reconocimiento de éxito [6]. En conclusión, las matemáticas (no el software, por lo tanto, no depende de la implementación) obligan a una cierta precisión para el proceso de reconocimiento de patrones dadas las acciones a estudiar. Para evitar esta situación, se debe considerar un menor número de variables, pero esto también reduce la complejidad de las acciones que se pueden analizar; una solución que no es aceptable en escenarios industriales donde se desarrollan actividades productivas complejas. 
+\newline
+
+Por lo tanto, el objetivo de este artículo es describir un nuevo algoritmo de reconocimiento de patrones que aborde estos dos problemas básicos. El mecanismo propuesto define las acciones como una composición de movimientos simples. Los movimientos simples se reconocen mediante técnicas de deformación dinámica del tiempo (DTW) [7]. Este proceso depende del hardware seleccionado para la captura de información; pero los DTW son muy flexibles y actualizar el repositorio de patrones es suficiente para reconfigurar todo el algoritmo. Luego, las acciones complejas se reconocen como combinaciones de movimientos simples a través de los Modelos Ocultos de Markov (HMM) [8]. Estos modelos son totalmente independientes de las tecnologías de hardware, ya que solo consideran acciones simples. Este enfoque de dos fases también reduce la complejidad de los modelos, aumentando la precisión y la tasa de éxito en el proceso de reconocimiento. 
+\newline
+
+El resto del documento está organizado de la siguiente manera: la Sección 2 describe el estado del arte sobre el reconocimiento de patrones para las actividades humanas; la Sección 3 describe la solución propuesta, incluyendo las dos fases definidas; la sección 4 presenta una validación experimental utilizando un escenario real y usuarios finales; y la Sección 5 concluye el documento. 
 
 
 \section{Reconocimiento de patrones de vanguardia }
 
-Se han informado muchas técnicas diferentes de reconocimiento de patrones para actividades humanas. Sin embargo, la propuesta más común puede clasificarse en cinco categorías [9]: (i) Modelos ocultos de Markov; (ii) el campo aleatorio condicional de cadena de salto; (iii) Patrones Emergentes; (iv) el Campo Aleatorio Condicional; y (v) clasificadores bayesianos. De hecho, la mayoría de los autores proponen el uso de Modelos Ocultos de Markov (HMM) para modelar las actividades humanas. HMM permite modelar acciones como cadenas de Markov [10][11]. Básicamente, HMM genera estados ocultos a partir de datos observables. En particular, el objetivo final de esta técnica es construir la secuencia de estados ocultos que encaje con una determinada secuencia de datos. Para finalmente definir todo el modelo, HMM debe deducir de los datos los parámetros del modelo de manera confiable. La figura 1 muestra una representación esquemática de cómo funciona HMM. Cuando se reconocen las actividades humanas, las acciones que componen las actividades son los estados ocultos y las salidas de los sensores son los datos que se estudian. HMM, además, permite el uso de técnicas de entrenamiento considerando el conocimiento previo sobre el modelo. Este entrenamiento a veces es esencial para “inducir” todas las posibles secuencias de datos requeridas para calcular el HMM. Por último, es muy importante señalar que los HMM aislados simples se pueden combinar para crear modelos más grandes y complejos.
+Se han informado muchas técnicas diferentes de reconocimiento de patrones para actividades humanas. Sin embargo, la propuesta más común puede clasificarse en cinco categorías [9]: (i) Modelos ocultos de Markov; (ii) el campo aleatorio condicional de cadena de salto; (iii) Patrones Emergentes; (iv) el Campo Aleatorio Condicional; y (v) clasificadores bayesianos. 
+\newline
+
+De hecho, la mayoría de los autores proponen el uso de Modelos Ocultos de Markov (HMM) para modelar las actividades humanas. HMM permite modelar acciones como cadenas de Markov [10][11]. Básicamente, HMM genera estados ocultos a partir de datos observables. En particular, el objetivo final de esta técnica es construir la secuencia de estados ocultos que encaje con una determinada secuencia de datos. Para finalmente definir todo el modelo, HMM debe deducir de los datos los parámetros del modelo de manera confiable. La figura 1 muestra una representación esquemática de cómo funciona HMM. Cuando se reconocen las actividades humanas, las acciones que componen las actividades son los estados ocultos y las salidas de los sensores son los datos que se estudian. HMM, además, permite el uso de técnicas de entrenamiento considerando el conocimiento previo sobre el modelo. Este entrenamiento a veces es esencial para “inducir” todas las posibles secuencias de datos requeridas para calcular el HMM. Por último, es muy importante señalar que los HMM aislados simples se pueden combinar para crear modelos más grandes y complejos.
 
 
 \includegraphics[max width=\textwidth]{2022_09_15_69d89c46b49bb93649d1g-03}
