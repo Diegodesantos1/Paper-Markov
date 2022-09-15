@@ -2,7 +2,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
-\usepackage[spanish]{babel}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{mhchem}
@@ -72,7 +71,7 @@ Las salidas de estos sensores se muestrean periódicamente cada    segundos; obt
 $$
 Y_{t}=\left\{y_{t}^{i}, i=1, \ldots, N_{s}\right\}
 $$
-Entonces, un simple movimiento  tendrá una duración de    segundos y será descrita por la secuencia temporal de    muestras multidimensionales recolectadas durante este tiempo (3). Para reconocer posteriormente los movimientos, un repositorio de patronesℛse crea conteniendo las correspondientes secuencias temporales para cada uno de los  acciones simples para ser reconocidas (4)
+Entonces, un simple movimiento  tendrá una duración de    segundos y será descrita por la secuencia temporal de    muestras multidimensionales recolectadas durante este tiempo (3). Para reconocer posteriormente los movimientos, un repositorio de patrones $\mathcal{R}$ se crea conteniendo las correspondientes secuencias temporales para cada uno de los  acciones simples para ser reconocidas (4)
 $$
 \begin{gathered}
 Y=\left\{Y_{t}, t=1, \ldots, T_{m}\right\}=\left\{Y^{i}, i=1, \ldots, N_{m}\right\} \\
@@ -148,8 +147,6 @@ $$
 
 \section{Experimental validation: implementation and results}
 Para evaluar el desempeño de la solución propuesta, se diseñó y llevó a cabo una validación experimental. Se emuló un escenario industrial en unas amplias salas de la Universidad Politécnica de Madrid. El escenario representaba una empresa tradicional que fabricaba productos hechos a mano. En particular, se emuló un pequeño fabricante de PCB (placas de circuito impreso). Para capturar información sobre el comportamiento de las personas, a los participantes se les proporcionó un guante cibernético, que incluía acelerómetros y un lector RFID [19]. Los objetos alrededor de los escenarios se identificaron con una etiqueta RFID, por lo que la plataforma de hardware propuesta puede identificar la posición de la mano (gesto) y los objetos con los que interactúan las personas. Se definió y reconoció una lista de doce actividades complejas diferentes utilizando la tecnología propuesta. La Tabla 1 describe las doce actividades definidas, incluyendo una breve descripción de las mismas. 
-
-\\
 
 Table 1. Complex activities' description
 
