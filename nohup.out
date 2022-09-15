@@ -947,3 +947,32 @@ Ctrl-C to stop.
 
 [36m[2022-09-14 16:28:35][00m [32m172.18.0.1:57086[00m was served file [35m/home/runner/Paper-Markov/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
 [36m[2022-09-14 16:28:35][00m [32m172.18.0.1:56630[00m was served file [35m/home/runner/Paper-Markov/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:23][00m [32m172.18.0.1:53436[00m was served file [35m/home/runner/Paper-Markov/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:23][00m                            found index file for directory [35m/home/runner/Paper-Markov[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:26][00m [32m172.18.0.1:53452[00m was served file [35m/home/runner/Paper-Markov/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:26][00m                            found index file for directory [35m/home/runner/Paper-Markov[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:32][00m [32m172.18.0.1:34406[00m was served file [35m/home/runner/Paper-Markov/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:46][00m [32m172.18.0.1:37350[00m was served file [35m/home/runner/Paper-Markov/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:46][00m                            found index file for directory [35m/home/runner/Paper-Markov[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:51][00m [32m172.18.0.1:41788[00m was served file [35m/home/runner/Paper-Markov/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:51][00m                            found index file for directory [35m/home/runner/Paper-Markov[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:52][00m [32m172.18.0.1:41788[00m was served file [35m/home/runner/Paper-Markov/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:56][00m [32m172.18.0.1:41800[00m was served file [35m/home/runner/Paper-Markov/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-14 16:53:56][00m                            found index file for directory [35m/home/runner/Paper-Markov[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-15 11:10:05][00m [32m172.18.0.1:48758[00m was served file [35m/home/runner/Paper-Markov/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-15 11:10:05][00m                            found index file for directory [35m/home/runner/Paper-Markov[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-15 11:10:05][00m [32m172.18.0.1:48772[00m was served file [35m/home/runner/Paper-Markov/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-15 11:10:05][00m Created temp dir [35m$TEMP/http-home-runner-Paper-Markov/encoded[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-15 11:10:06][00m [32m172.18.0.1:38426[00m was served file [35m/home/runner/Paper-Markov/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-15 11:10:06][00m                            found index file for directory [35m/home/runner/Paper-Markov[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-15 11:10:06][00m [32m172.18.0.1:38426[00m was served file [35m/home/runner/Paper-Markov/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-15 11:10:07][00m [32m172.18.0.1:48782[00m was served file [35m/home/runner/Paper-Markov/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-15 11:10:10][00m [32m172.18.0.1:48798[00m was served file [35m/home/runner/Paper-Markov/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-15 15:28:07][00m [32m172.18.0.1:59738[00m was served file [35m/home/runner/Paper-Markov/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-15 15:28:07][00m Created temp dir [35m$TEMP/http-home-runner-Paper-Markov/encoded[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
