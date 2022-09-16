@@ -3,7 +3,7 @@
 <h3 align="center">Perfiles de GitHub de los autores de este proyecto:</h3>
 
 1. [@jmedina28](https://github.com/jmedina28)
-2. [@estherrodriguezgarcia](https://github.com/ESTHERRODRIGUEZGARCIA)
+2. [@Diegodesantos1](https://github.com/Diegodesantos1)
 3. [@mat0ta](https://github.com/mat0ta)
 4. [@XaviTheForce](https://github.com/Xavitheforce)
 
