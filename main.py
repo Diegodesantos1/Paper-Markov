@@ -1,4 +1,4 @@
-import pandas as pnd
+"""import pandas as pnd
 import JMPEstadisticas as jmp
 import numpy as np
 
@@ -9,3 +9,4 @@ if __name__ == '__main__':
         #--- ANALISIS DE UNA CARACTERISTICA ---
         stats = jmp.JMPEstadisticas(observaciones['POBLACION'])
         stats.analisisCaracteristica()
+"""

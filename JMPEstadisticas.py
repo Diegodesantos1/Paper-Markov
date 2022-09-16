@@ -1,4 +1,4 @@
-from collections import Counter
+"""from collections import Counter
 from math import *
 import matplotlib.pyplot as plt
 
@@ -208,28 +208,4 @@ class JMPEstadisticas:
         print("95 % de los valores de las observaciones se sitúan entre " + str(media - (desviacionTipica * 2)) + " y " + str(
             media + (desviacionTipica * 2)))
         print("99 % de los valores de las observaciones se sitúan entre " + str(media - (desviacionTipica * 3)) + " y " + str(
-            media + (desviacionTipica * 3)))
-
-        print("\n\n-----------------------------------------")
-        print("      CUARTILES        ")
-        print("-----------------------------------------\n")
-        cuartiles = self.calculoDelosCuartiles(mediana[0],mediana[1])
-        print("25 % de las observaciones tienen un valor inferior a " + str(cuartiles[0]))
-        print("50 % de las observaciones tienen un valor inferior a " + str(cuartiles[1]))
-        print("75 % de las observaciones tienen un valor inferior a " + str(cuartiles[2]))
-
-
-        print("\n\n-----------------------------------------")
-        print("      DETECCION VALORES ABERRANTES        ")
-        print("-----------------------------------------\n")
-        print("> Criterios de Tukey")
-        valoresAberrantes = self.criterioDeTukey(cuartiles[0], cuartiles[2])
-        print("Cantidad de valores aberrantes: " + str(len(valoresAberrantes)))
-        print("Valores:" + str(valoresAberrantes))
-
-
-        print("\n\n-----------------------------------------")
-        print("      VISUALIZACION        ")
-        print("-----------------------------------------\n")
-        print("Generación de las gráficas...")
-        self.visualizacion(media,mediana[0],cuartiles[0],cuartiles[1],cuartiles[2])
+            media + (desviacionTipica * 3)))"""
