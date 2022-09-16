@@ -1,10 +1,12 @@
 \documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{mhchem}
 \usepackage{amssymb}
+\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{stmaryrd}
 \usepackage[export]{adjustbox}
@@ -27,7 +29,7 @@ bbordel@dit.upm.es, ramon.alcarria@upm.es, diegosanchez@dit.upm.es}
 
 
 \begin{abstract}
- Los futuros sistemas industriales, una revolución conocida como Industria 4.0, están previstos para integrar a las personas en el mundo cibernético como prosumidores (proveedores de servicios y consumidores). En este contexto, los procesos impulsados por humanos aparecen como una realidad esencial y se requieren instrumentos para crear bucles de información de retroalimentación entre el subsistema social (personas) y el subsistema cibernético (componentes tecnológicos). Aunque se han propuesto muchos instrumentos diferentes, hoy en día las técnicas de reconocimiento de patrones son las más prometedoras. Sin embargo, estas soluciones presentan algunos problemas pendientes importantes. Por ejemplo, dependen del hardware seleccionado para adquirir información de los usuarios; o presentan un límite en la precisión del proceso de reconocimiento. Para abordar esta situación, en este trabajo se propone un algoritmo de dos fases para integrar personas en la Industria 4. 0 sistemas y procesos impulsados por humanos. El algoritmo define acciones complejas como composiciones de movimientos simples. Las acciones complejas se reconocen utilizando modelos ocultos de Markov y los movimientos simples se reconocen utilizando Dynamic Time Warping. De esa manera, solo los movimientos dependen de los dispositivos de hardware empleados para capturar información, y la precisión del reconocimiento de acciones complejas aumenta considerablemente. También se realiza una validación experimental real para evaluar y comparar el rendimiento de la solución propuesta. y la precisión del reconocimiento de acciones complejas aumenta considerablemente. También se realiza una validación experimental real para evaluar y comparar el rendimiento de la solución propuesta. y la precisión del reconocimiento de acciones complejas aumenta considerablemente. También se realiza una validación experimental real para evaluar y comparar el rendimiento de la solución propuesta. 
+ Los futuros sistemas industriales, una revolución conocida como Industria 4.0, están previstos para integrar a las personas en el mundo cibernético como prosumidores (proveedores de servicios y consumidores). En este contexto, los procesos impulsados por humanos aparecen como una realidad esencial y se requieren instrumentos para crear bucles de información de retroalimentación entre el subsistema social (personas) y el subsistema cibernético (componentes tecnológicos). Aunque se han propuesto muchos instrumentos diferentes, hoy en día las técnicas de reconocimiento de patrones son las más prometedoras. Sin embargo, estas soluciones presentan algunos problemas pendientes importantes. Por ejemplo, dependen del hardware seleccionado para adquirir información de los usuarios; o presentan un límite en la precisión del proceso de reconocimiento. Para abordar esta situación, en este trabajo se propone un algoritmo de dos fases para integrar personas en los sistemas de la Industria 4. 0 y en los procesos impulsados por humanos. El algoritmo define acciones complejas como composiciones de movimientos simples. Las acciones complejas se reconocen utilizando modelos ocultos de Markov y los movimientos simples se reconocen utilizando Dynamic Time Warping. De esa manera, solo los movimientos dependen de los dispositivos de hardware empleados para capturar información, y la precisión del reconocimiento de acciones complejas aumenta considerablemente. También se realiza una validación experimental real para evaluar y comparar el rendimiento de la solución propuesta. Además, la precisión del reconocimiento de acciones complejas aumenta considerablemente.
 
 \end{abstract}
 
@@ -81,28 +83,28 @@ presenta una arquitectura con tres capas diferentes (ver Figura 2).
 
 \includegraphics[max width=\textwidth]{2022_09_15_69d89c46b49bb93649d1g-04}
 
-Fig. 2. Arquitectura de la solución de reconocimiento de patrones propuesta 
+Fig. 2. Arquitectura de la solución de reconocimiento de patrones propuesta\\
 
 La capa más baja incluye la plataforma de hardware. Los dispositivos de monitoreo como acelerómetros, teléfonos inteligentes, sensores infrarrojos, etiquetas RFID, etc., se implementan para capturar información sobre el comportamiento de las personas. Las salidas de estos dispositivos crean secuencias de datos físicos cuyo formato, rango dinámico, etc., dependen totalmente de las tecnologías de hardware seleccionadas. Estas secuencias de datos físicos luego se procesan en la capa intermedia utilizando técnicas DTW. Como resultado, para cada secuencia de datos físicos, se reconoce un movimiento o acción simple. Estas acciones simples se representan mediante un formato de datos binarios para que la solución sea lo más ligera posible. El software en este nivel debe modificarse cada vez que se actualiza la plataforma de hardware, pero las tecnologías DTW no requieren un proceso de actualización pesado, y actualizar el repositorio de patrones es suficiente para configurar el algoritmo en este nivel. Los movimientos simples reconocidos, entonces, se agrupan para crear secuencias de datos lógicos. Estas secuencias alimentan un sistema de reconocimiento de patrones de alto nivel basado en modelos ocultos de Markov. En este nivel, los componentes de software requieren un proceso de entrenamiento pesado, pero la capa intermedia hace que la plataforma de hardware y los modelos de alto nivel sean totalmente independientes. Por lo tanto, cualquier cambio en la plataforma de hardware no impone una actualización en el HMM, lo que sería extremadamente costoso desde el punto de vista computacional. Mediante el análisis de la secuencia de movimientos simples, se reconocen acciones complejas. La siguiente subsección describe en detalle las dos fases de reconocimiento de patrones propuestas.
 
 \subsection{Reconocimiento de movimiento simple: Dynamic Time Warping}
-Para reconocer gestos o movimientos simples, se selecciona una solución Dynamic Time Warping. Las tecnologías DTW cumplen con los requisitos de los componentes de software de nivel medio, ya que se adaptan muy fácilmente a las características de la plataforma de hardware subyacente y son bastante rápidas y eficientes (por lo que los pequeños dispositivos integrados pueden implementarlas). En nuestra solución, el comportamiento humano es monitoreado a través de una familia de sensores , que contiene componentes (1). 
+Para reconocer gestos o movimientos simples, se selecciona una solución Dynamic Time Warping. Las tecnologías DTW cumplen con los requisitos de los componentes de software de nivel medio, ya que se adaptan muy fácilmente a las características de la plataforma de hardware subyacente y son bastante rápidas y eficientes (por lo que los pequeños dispositivos integrados pueden implementarlas). En nuestra solución, el comportamiento humano es monitoreado a través de una familia de sensores $\mathcal{S}$, que contiene $N_{s}$ componentes (1). 
 
 $$
 \mathcal{S}=\left\{s_{i}, i=1, \ldots, N_{s}\right\}
 $$
-Las salidas de estos sensores se muestrean periódicamente cada    segundos; obteniendo para cada instante de tiempo,  ,un vector de    (cada valor de cada sensor). este vector    se llama “una muestra multidimensional”. (2) 
+Las salidas de estos sensores se muestrean periódicamente cada    $T_{s}$ segundos; obteniendo para cada instante de tiempo, t,un vector de $N_{s}$ (cada valor de cada sensor). Este vector $Y_{t}$ se llama “una muestra multidimensional”. (2) 
 $$
 Y_{t}=\left\{y_{t}^{i}, i=1, \ldots, N_{s}\right\}
 $$
-Entonces, un simple movimiento  tendrá una duración de    segundos y será descrita por la secuencia temporal de    muestras multidimensionales recolectadas durante este tiempo (3). Para reconocer posteriormente los movimientos, un repositorio de patrones $\mathcal{R}$ se crea conteniendo las correspondientes secuencias temporales para cada uno de los  acciones simples para ser reconocidas (4)
+Entonces, un simple movimiento Y tendrá una duración de $T_{m}$ segundos y será descrita por la secuencia temporal de $N_{m}$ muestras multidimensionales recolectadas durante este tiempo (3). Para reconocer posteriormente los movimientos, un repositorio de patrones $\mathcal{R}$ se crea conteniendo las correspondientes secuencias temporales para cada uno de las K acciones simples para ser reconocidas (4)
 $$
 \begin{gathered}
 Y=\left\{Y_{t}, t=1, \ldots, T_{m}\right\}=\left\{Y^{i}, i=1, \ldots, N_{m}\right\} \\
 \mathcal{R}=\left\{R_{i}, i=1, \ldots, K\right\}
 \end{gathered}
 $$
-En general, las personas realizan movimientos de manera similar pero diferente. Así, las transiciones pueden ser más lentas o más rápidas, se pueden agregar o quitar algunas acciones elementales, etc.  Por lo tanto, dada una secuencia $X$ con $N_{x}$ muestras, representando un movimiento a ser reconocido, se debe localizar el $R_{i} \in \mathcal{R}$ más cerca a $X$; así que $R_{i}$ se reconoce como la acción realizada. Para ello se define una función distancia (5). Esta función de distancia se puede aplicar para calcular una matriz de costos, requerida ya que las muestras generalmente no tienen la misma longitud ni están alineadas (6).
+En general, las personas realizan movimientos de manera similar pero diferente. Así, las transiciones pueden ser más lentas o más rápidas, se pueden agregar o quitar algunas acciones elementales, etc.  Por lo tanto, dada una secuencia $X$ con $N_{x}$ muestras, representando un movimiento a ser reconocido, se debe localizar el patrón $R_{i} \in \mathcal{R}$ más cerca a $X$; así que $R_{i}$ se reconoce como la acción realizada. Para ello se define una función distancia (5). Esta función de distancia se puede aplicar para calcular una matriz de costos, requerida ya que las muestras generalmente no tienen la misma longitud ni están alineadas (6).
 $$
 \begin{aligned}
 &d: \mathcal{F} \times \mathcal{F} \rightarrow \mathbb{R}^{+}, \quad X^{i}, r_{j}^{i} \in \mathcal{F} \\
@@ -115,7 +117,7 @@ $$
 d\left(X^{n}, R_{j}^{m}\right)=\sqrt{\sum_{i=1}^{N_{S}}\left(x_{i}^{n}-r_{i}^{m, j}\right)^{2}}
 $$
 Entonces, se define un camino de deformación $p=\left(p_{1}, p_{2}, \ldots, p_{L}\right)$ como una secuencia de pares $\left(n_{\ell}, m_{\ell}\right)$ con $\left(n_{\ell}, m_{\ell}\right) \in\left[1, N_{x}\right] \times\left[1, N_{m}\right]$ and $\ell \in[1, L]$, cumpliendo tres condiciones: (i) la condición de contorno, es decir $p_{1}=[1,1]$ y $p_{L}=\left[N_{x}, N_{m}\right]$; (ii) la condición de monotonicidad, es decir: $n_{1} \leq n_{2} \leq \cdots \leq n_{L}$ and $m_{1} \leq m_{2} \leq \cdots \leq m_{L}$; y (iii) la condición del tamaño del paso, es decir  $p_{\ell}-p_{\ell-1} \in\{(1,0),(0,1),(1,1)\}$ con $\ell \in[1, L-1]$.
-Entonces, el costo total de un camino de deformación    se calcula sumando todos los costes parciales o distancias (8). Con todo esto, la distancia entre dos secuencias de datos y se define como el costo (distancia) de la ruta de pandeo óptima $p^{*}(9)$.
+Entonces, el costo total de un camino de deformación $p_{i}$ se calcula sumando todos los costes parciales o distancias (8). Con todo esto, la distancia entre dos secuencias de datos $R_{i}$ y X se define como el costo (distancia) de la ruta de pandeo óptima $p^{*}(9)$.
 $$
 \begin{gathered}
 d_{p_{i}}\left(X, R_{j}\right)=\sum_{\ell=1}^{L} d\left(X^{n_{\ell}}, R_{j}^{m_{\ell}}\right) \\
@@ -123,7 +125,7 @@ d_{D T W}\left(X, R_{j}\right)=d_{p^{*}}\left(X, R_{j}\right)=\min \left\{d_{p_{
 \end{gathered}
 $$
 Finalmente, el movimiento simple reconocido a partir de la secuencia de datos X es aquello cuyo patrón $R_{i}$  tiene la distancia más pequeña (es el más cercano) a X.
-El uso de esta definición es tolerante a las variaciones de velocidad en la ejecución del movimiento, a la introducción de nuevos microgestos, etc. Además, como se puede observar, cuando se despliega una tecnología de hardware diferente, basta con actualizar el repositorio de patrones. $\mathcal{R}$ para reconfigurar toda la solución de reconocimiento de patrones (ya que no se requiere capacitación). 
+El uso de esta definición es tolerante a las variaciones de velocidad en la ejecución del movimiento, a la introducción de nuevos microgestos, etc. Además, como se puede observar, cuando se despliega una tecnología de hardware diferente, basta con actualizar el repositorio de patrones $\mathcal{R}$ para reconfigurar toda la solución de reconocimiento de patrones (ya que no se requiere capacitación). 
 
 
 
@@ -131,7 +133,7 @@ El uso de esta definición es tolerante a las variaciones de velocidad en la eje
 El mecanismo propuesto anteriormente es muy útil para reconocer acciones simples, pero las actividades complejas involucran una gran cantidad de variables y requieren mucho más tiempo. Por lo tanto, DTW tiende a volverse impreciso y se requieren modelos probabilísticos. Entre todos los modelos existentes, HMM es el más adecuado para escenarios industriales y procesos impulsados por humanos.
 
 
-De la fase anterior, se despliega el universo de posibles movimientos simples a reconocer $\mathcal{M}=\left\{m_{i}, i=1, \ldots, K\right\}$. Además, se define un universo de estados $\mathcal{U}=\left\{u_{i}, i=1, \ldots, Q\right\}$,  describiendo todos los estados que las personas pueden atravesar mientras realizan alguna de las acciones objeto de estudio. Entonces, un conjunto de observaciones $\mathcal{O}=\left\{o_{i}, i=1, \ldots, Z_{o}\right\}$ (movimientos simples reconocidos en la fase anterior), así como la secuencia de estados $V=\left\{o_{i}, i=1, \ldots, Z_{v}\right\}$ describiendo la acción a un modelado por HMM. En este caso inicial, estamos suponiendo que cada observación corresponde a un nuevo estado, por lo que  $Z_{v}=Z_{o}$ uego, se calculan tres matrices: (i) la matriz transitoria  A (10) que describe la probabilidad de estado $u_{j}$ siguiente estado $u_{i}$; (ii) la matriz de observación (11) que describe la probabilidad de observación$o_{i}$ causada por el estado $u_{j}$ independientemente de $k$; y (iii) la matriz de probabilidad inicial (12).
+De la fase anterior, se despliega el universo de posibles movimientos simples a reconocer $\mathcal{M}=\left\{m_{i}, i=1, \ldots, K\right\}$. Además, se define un universo de estados $\mathcal{U}=\left\{u_{i}, i=1, \ldots, Q\right\}$,  describiendo todos los estados que las personas pueden atravesar mientras realizan alguna de las acciones objeto de estudio. Entonces, también se considera un conjunto de observaciones $\mathcal{O}=\left\{o_{i}, i=1, \ldots, Z_{o}\right\}$ (movimientos simples reconocidos en la fase anterior), así como la secuencia de estados $V=\left\{o_{i}, i=1, \ldots, Z_{v}\right\}$ que describen la acción, como un modelado por HMM. En este caso inicial, estamos suponiendo que cada observación corresponde a un nuevo estado, por lo que  $Z_{v}=Z_{o}$ . Luego, se calculan tres matrices: (i) la matriz transitoria  A (10) que describe la probabilidad de estado $u_{j}$ siguiente el estado $u_{i}$; (ii) la matriz de observación (11) que describe la probabilidad de observación $o_{i}$ causada por el estado $u_{j}$ independientemente de $k$; y (iii) la matriz de probabilidad inicial (12).
 
 $$
 \begin{aligned}
@@ -140,7 +142,7 @@ $$
 & \Pi=\left[\pi_{i}\right] \quad \pi_{i}=P\left(v_{1}=u_{i}\right)
 \end{aligned}
 $$
-Entonces, el HMM para cada actividad compleja    ser reconocido está descrito por estos tres elementos anteriores (13).
+Entonces, el HMM para que cada actividad compleja $\lambda_{i}$ sea reconocida está descrito por estos tres elementos anteriores (13).
 $$
 \lambda_{i}=\left\{A_{i}, B_{i}, \Pi_{\mathrm{i}}\right\}
 $$
@@ -159,7 +161,7 @@ P(\mathcal{O} \mid \lambda)=\sum_{V} P(\mathcal{O} \mid V, \lambda) P(V \mid \la
 =\sum_{v 1, v 2, . ., v_{z v}} \pi_{v 1} \cdot b_{v 1}\left(o_{1}\right) \cdot a_{v 1 v 2} \cdot b_{v 2}\left(o_{2}\right) \cdot \ldots \cdot a_{v_{z v-1} v_{z v}} \cdot b_{v z v}\left(o_{z o}\right)
 \end{gathered}
 $$
-El proceso de aprendizaje también se implementó en su forma más sencilla. Se emplearon definiciones estadísticas para matriz transitoria, matriz de observación y matriz de probabilidad inicial. En particular, se empleó la definición de probabilidad de Laplace para estimar estas tres matrices a partir de estadísticas sobre las actividades en estudio (17-19). El operador $(\cdot)$ indica el número de veces que ocurre un evento.
+El proceso de aprendizaje también se implementó en su forma más sencilla. Se emplearon definiciones estadísticas para la matriz transitoria, matriz de observación y matriz de probabilidad inicial. En particular, se empleó la definición de probabilidad de Laplace para estimar estas tres matrices a partir de estadísticas sobre las actividades en estudio (17-19). El operador count$(\cdot)$ indica el número de veces que ocurre un evento.
 
 $$
 \begin{gathered}
@@ -169,10 +171,10 @@ b_{j}\left(o_{i}\right)=P\left(o_{i} \mid u_{j}\right)=\frac{\operatorname{count
 \end{gathered}
 $$
 
-\section{Experimental validation: implementation and results}
-Para evaluar el desempeño de la solución propuesta, se diseñó y llevó a cabo una validación experimental. Se emuló un escenario industrial en unas amplias salas de la Universidad Politécnica de Madrid. El escenario representaba una empresa tradicional que fabricaba productos hechos a mano. En particular, se emuló un pequeño fabricante de PCB (placas de circuito impreso). Para capturar información sobre el comportamiento de las personas, a los participantes se les proporcionó un guante cibernético, que incluía acelerómetros y un lector RFID [19]. Los objetos alrededor de los escenarios se identificaron con una etiqueta RFID, por lo que la plataforma de hardware propuesta puede identificar la posición de la mano (gesto) y los objetos con los que interactúan las personas. Se definió y reconoció una lista de doce actividades complejas diferentes utilizando la tecnología propuesta. La Tabla 1 describe las doce actividades definidas, incluyendo una breve descripción de las mismas. 
+\section{Validación experimental: implementación y resultados}
+Para evaluar el desempeño de la solución propuesta, se diseñó y llevó a cabo una validación experimental. Se emuló un escenario industrial en unas amplias salas de la Universidad Politécnica de Madrid. El escenario representaba una empresa tradicional que fabricaba productos hechos a mano. En particular, se emuló un pequeño fabricante de PCB (placas de circuito impreso). Para capturar información sobre el comportamiento de las personas, a los participantes se les proporcionó un guante cibernético, que incluía acelerómetros y un lector RFID [19]. Los objetos alrededor de los escenarios se identificaron con una etiqueta RFID, por lo que la plataforma de hardware propuesta puede identificar la posición de la mano (gesto) y los objetos con los que interactúan las personas. Se definió y reconoció una lista de doce actividades complejas diferentes utilizando la tecnología propuesta. La Tabla 1 describe las doce actividades definidas, incluyendo una breve descripción de las mismas.\\
 
-Table 1. Complex activities' description
+Table 1. Complex activities' description\\
 
 \begin{tabular}{|l|l|}
 \hline
@@ -203,16 +205,16 @@ Taladre los agujeros requeridos & Los agujeros para los componentes, etc.,\\ &  
 \hline
 Enchapado & En un horno, el tablero está terminado.\\
 \hline
-\end{tabular}
+\end{tabular}\\
 \newline
 
-Dieciocho personas (18) participaron en el experimento. Se solicitó a las personas que realizaran las actividades en un número aleatorio. El orden real, así como el orden en que se reconocen las actividades, fueron almacenados por un proceso de software de supervisión. Se evaluó la tasa de éxito global para toda la solución, identificando (además), la misma tasa para cada una de las fases existentes.
+Dieciocho personas (18) participaron en el experimento. Se solicitó a las personas que realizaran las actividades en un número aleatorio. El orden real, así como el orden en que se reconocen las actividades, fueron almacenados por un proceso de software de supervisión. Se evaluó la tasa de éxito global para toda la solución, identificando (además,) la misma tasa para cada una de las fases existentes.
 \newline
 
 Para evaluar la mejora obtenida en comparación con soluciones similares existentes, se emplearon las mismas secuencias de datos físicos para alimentar una solución estándar de reconocimiento de patrones basada únicamente en HMM. Utilizando un software de procesamiento de datos estadísticos, se extraen algunos resultados relevantes.
 \newline
 
-La figura 4 representa la tasa media de éxito para tres casos: la solución global, la primera fase (DTW) y la segunda fase (HMM). Además, también se incluye la tasa de éxito del enfoque tradicional basado en HMM. Como puede verse, la tecnología propuesta es, globalmente, alrededor de un 9\% mejor que las técnicas tradicionales de reconocimiento de patrones basadas exclusivamente en HMM. Además, la primera fase (basada en DTW) es alrededor de un 20\% peor que la segunda fase (HMM), lo que es significativo ya que las técnicas de deformación dinámica del tiempo son más débiles de forma predeterminada.
+La figura 4 representa la tasa media de éxito para tres casos: la solución global, la primera fase (DTW) y la segunda fase (HMM). Además, también se incluye la tasa de éxito del enfoque tradicional basado en HMM. Como puede verse, la tecnología propuesta es, globalmente, alrededor de un 9\% mejor que las técnicas tradicionales de reconocimiento de patrones basadas exclusivamente en HMM. Además, la primera fase (basada en DTW) es alrededor de un 20\% peor que la segunda fase (HMM), lo que es significativo ya que las técnicas de deformación dinámica del tiempo son más débiles de forma predeterminada.\\
 
 
 \includegraphics[max width=\textwidth]{2022_09_15_69d89c46b49bb93649d1g-09}
