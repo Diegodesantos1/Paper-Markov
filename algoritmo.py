@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 # leemos el archivo csv
 def leerArchivo():
-    df = pd.read_csv('Industry4.0.csv')
+    df = pd.read_csv('police_deaths.csv')
     return df
 
 def calculoMediaAritmetica(caracteristica):
