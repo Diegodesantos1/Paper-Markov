@@ -11,4 +11,5 @@ df = leerArchivo('police_deaths.csv')
 frecuencia = df.groupby(['Year']).count()
 print(frecuencia)
 
-
+frecuencia.plot(kind='line', color='black')
+plt.show()
