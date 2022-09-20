@@ -7,9 +7,16 @@ def leerArchivo(csv):
     return df
 
 print(leerArchivo('police_deaths.csv'))
-df = leerArchivo('police_deaths.csv')
-frecuencia = df.groupby(['Year']).count()
+df1 = leerArchivo('police_deaths.csv')
+frecuencia = df1.groupby(['Year']).count()
 print(frecuencia)
 
 frecuencia.plot(kind='line', color='black')
 plt.show()
+
+def k9Unit(df):
+    df = df[df['K9_Unit'] == 1]
+    return df
+
+print(k9Unit(df1))
+df2 = k9Unit(df1)
