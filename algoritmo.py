@@ -20,3 +20,9 @@ def k9Unit(df):
 
 print(k9Unit(df1))
 df2 = k9Unit(df1)
+
+def muertesPorAño(df):
+    df = df.groupby(['Year']).count()
+    return df
+
+print(muertesPorAño(df2))
