@@ -8,7 +8,7 @@
 4. [@XaviTheForce](https://github.com/Xavitheforce)
 
 ---
-En este [repositorio](https://github.com/Diegodesantos1/Paper-Markov) queda resueltos los ejercicios de la Tarea Inicial.
+En este [repositorio](https://github.com/Diegodesantos1/Paper-Markov) queda resuelto el ejercicio de la Tarea Inicial.
 ***
 
 <h2 align="center">Parte 1: Ejercicio de Látex</h2>
