@@ -68,7 +68,7 @@ Se han informado muchas técnicas diferentes de reconocimiento de patrones para 
 De hecho, la mayoría de los autores proponen el uso de Modelos Ocultos de Markov (HMM) para modelar las actividades humanas. HMM permite modelar acciones como cadenas de Markov [10][11]. Básicamente, HMM genera estados ocultos a partir de datos observables. En particular, el objetivo final de esta técnica es construir la secuencia de estados ocultos que encaje con una determinada secuencia de datos. Para finalmente definir todo el modelo, HMM debe deducir de los datos los parámetros del modelo de manera confiable. La figura 1 muestra una representación esquemática de cómo funciona HMM. Cuando se reconocen las actividades humanas, las acciones que componen las actividades son los estados ocultos y las salidas de los sensores son los datos que se estudian. HMM, además, permite el uso de técnicas de entrenamiento considerando el conocimiento previo sobre el modelo. Este entrenamiento a veces es esencial para “inducir” todas las posibles secuencias de datos requeridas para calcular el HMM. Por último, es muy importante señalar que los HMM aislados simples se pueden combinar para crear modelos más grandes y complejos.
 
 
-\includegraphics[max width=\textwidth]{2022_09_15_69d89c46b49bb93649d1g-03}
+\includegraphics[max width=\textwidth]{images/2022_09_15_69d89c46b49bb93649d1g-03}
 
 Fig. 1. Representación gráfica de un HMM\\
 
@@ -81,7 +81,7 @@ hardware empleados para capturar información, (ii) permitir el reconocimiento d
 complejas y (iii) preservar el carácter liviano de los modelos seleccionados, la solución propuesta
 presenta una arquitectura con tres capas diferentes (ver Figura 2).
 
-\includegraphics[max width=\textwidth]{2022_09_15_69d89c46b49bb93649d1g-04}
+\includegraphics[max width=\textwidth]{images/2022_09_15_69d89c46b49bb93649d1g-04}
 
 Fig. 2. Arquitectura de la solución de reconocimiento de patrones propuesta\\
 
@@ -217,7 +217,7 @@ Para evaluar la mejora obtenida en comparación con soluciones similares existen
 La figura 4 representa la tasa media de éxito para tres casos: la solución global, la primera fase (DTW) y la segunda fase (HMM). Además, también se incluye la tasa de éxito del enfoque tradicional basado en HMM. Como puede verse, la tecnología propuesta es, globalmente, alrededor de un 9\% mejor que las técnicas tradicionales de reconocimiento de patrones basadas exclusivamente en HMM. Además, la primera fase (basada en DTW) es alrededor de un 20\% peor que la segunda fase (HMM), lo que es significativo ya que las técnicas de deformación dinámica del tiempo son más débiles de forma predeterminada.\\
 
 
-\includegraphics[max width=\textwidth]{2022_09_15_69d89c46b49bb93649d1g-09}
+\includegraphics[max width=\textwidth]{images/2022_09_15_69d89c46b49bb93649d1g-09}
 
 Fig. 4. Tasa media de éxito de la solución propuesta
 
