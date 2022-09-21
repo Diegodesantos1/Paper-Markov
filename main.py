@@ -3,9 +3,10 @@ import Parte2.JMPEstadisticas as jmp
 import numpy as np
 import matplotlib.pyplot as plt
 from Parte2.algoritmo import Markov
+from introducir import solicitar_introducir_numero_extremo
 
 def main():
-        eleccion=int(input(("¿Qué quieres ejecutar? 1: Análisis de datos, 2: Algoritmo y análisis de Markov, 3 Fin: ")))
+        eleccion=solicitar_introducir_numero_extremo("¿Qué quieres ejecutar? 1: Análisis de datos, 2: Algoritmo y análisis de Markov, 3 Fin: ", 1, 3)
         if eleccion==1:
                 variables = ["precipitation","temp_max","temp_min","wind"]
                 for i in range (4):
