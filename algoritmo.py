@@ -58,3 +58,38 @@ v_ll = 0.7
 nv_ll = 0.3
 v_n = 0.4
 nv_n = 0.6
+
+#para poder elegir el valor correspondiente en la formula markov
+def sacar_valor(letra):
+    if letra == 'v':
+        return [v_s, v_ll, v_n]
+    else:
+        return [nv_s, nv_ll, nv_n]
+
+#probabilidad de una secuencia de estados(los definidos aleatoria)
+def markov(secuencia):
+    lista1 = []
+    lista2 = []
+    lista3 = []
+    listadefi = []
+    contador = 0
+    for i in range(len(secuencia)):
+        if contador == 0:
+            a1 = sacar_valor(secuencia[contador])[0]*prob_sol
+            a2 = sacar_valor(secuencia[contador])[1]*prob_llu
+            a3 = sacar_valor(secuencia[contador])[2]*prob_niev
+            lista1.append(a1)
+            lista2.append(a2)
+            lista3.append(a3)
+        else:
+            a1 = sacar_valor(secuencia[contador])[0]*(m_t[0][0]*lista1[contador-1]+m_t[1][0]*lista2[contador-1]+m_t[2][0]*lista3[contador-1])
+            a2 = sacar_valor(secuencia[contador])[1]*(m_t[0][1]*lista1[contador-1]+m_t[1][1]*lista2[contador-1]+m_t[2][1]*lista3[contador-1])
+            a3 = sacar_valor(secuencia[contador])[2]*(m_t[0][2]*lista1[contador-1]+m_t[1][2]*lista2[contador-1]+m_t[2][2]*lista3[contador-1])
+            lista1.append(a1)
+            lista2.append(a2)
+            lista3.append(a3)
+        contador+=1
+    listadefi.append[lista1[len(lista1)-1]]
+    listadefi.append[lista2[len(lista2)-1]]
+    listadefi.append[lista3[len(lista3)-1]]
+    return listadefi
