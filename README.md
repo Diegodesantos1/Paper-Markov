@@ -19,5 +19,5 @@ Hemos traducido el pdf original y lo hemos pasado a LaTeX, utilizando Overleaf y
 
 Primero, para poder comenzar a trabajar hemos seleccionado un dataset y hemos realizado su analisis básico inicial para tener datos sobre los que trabajar.
 
-En este trabajo hemos programado un algoritmo que hace uso de las cadenas ocultas de Markov para calcular la probabilidad de que ocurran determinadas secuencias de estados(en este caso v=defectuoso y nv=no defectuoso) dependiendo de otros factores externos (en este caso 3 fabricas distintas Sol, Lluv y Niev).
-En esencia, introduces una cadena
+En esta parte del trabajo hemos programado un algoritmo que hace uso de las cadenas ocultas de Markov para calcular la probabilidad de que ocurran determinadas secuencias de estados (en este caso v= defectuoso y nv= no defectuoso) dependiendo de otros factores externos (en este caso 3 fabricas distintas Sol, Lluv y Niev de las que salen los productos).
+En esencia, defines una cadena de estos estados y, basándose en probabilidades ya definidas de antemano,(gracias a nuestro maravilloso dataset) el codigo va calculando aplicando la matriz de Markov y las "frecuencias" de los estados las probabilidades de que los productos salgan de esa manera de una fábrica u otra. Al final, se suma la última lista creada con los resultados finales para dar con la probabilidad final y real de esa cadena de estados teniendo en cuenta las 3 fábricas iniciales.

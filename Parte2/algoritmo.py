@@ -8,7 +8,7 @@ def leerArchivo(csv):
         return df
 
 class Markov: #clase que calcula la probabilidad de que ocurra una secuencia determinada por probabilidades condicionadas
-    tiempos = leerArchivo('Parte2/seattle-weather.csv')['weather'].tolist()
+    tiempos = leerArchivo('Parte2/Industry4.0.csv')['weather'].tolist()
     del(tiempos[0])
     tiempo = []
     for causa in tiempos:
