@@ -1,5 +1,5 @@
 import pandas as pnd
-import JMPEstadisticas as jmp
+import Parte2.JMPEstadisticas as jmp
 import numpy as np
 import matplotlib.pyplot as plt
 from Parte2.algoritmo import Markov
