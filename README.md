@@ -24,4 +24,4 @@ En esencia, defines una cadena de estos estados y, basándose en probabilidades 
 
 <h2 align="center"> Parte 3: Conclusiones</h2>
 
-Las cadenas ocultas de Markov junto con el uso del Dynamic Time Warping tienen 
+Las cadenas ocultas de Markov junto con el uso del Dynamic Time Warping tienen una infinidad de usos, entre ellos la de predecir, basandose en hechos pasados, acciones futuras en función de parámetros que relacionan estos ultimos con variables que se pueden medir y calcular matemátimamente. También predicen secuencias de acciones u estados, como visto en el ejemplo algorítmico planteado y pueden incluso (como visto en el documento sobre el que hemos trabajado) ayudar a integrar procesos computacionales de manera rápida y eficaz en la industria moderna.

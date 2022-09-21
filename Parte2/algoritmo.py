@@ -3,10 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
 
-def leerArchivo(csv):
-        df = pd.read_csv(csv)
-        return df
-
 class Markov: #clase que calcula la probabilidad de que ocurra una secuencia determinada por probabilidades condicionadas
     
     def leerArchivo(csv):
