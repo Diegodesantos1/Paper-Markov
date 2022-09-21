@@ -89,7 +89,11 @@ def markov(secuencia):
             lista2.append(a2)
             lista3.append(a3)
         contador+=1
-    listadefi.append[lista1[len(lista1)-1]]
-    listadefi.append[lista2[len(lista2)-1]]
-    listadefi.append[lista3[len(lista3)-1]]
+    listadefi.append(lista1[-1])
+    listadefi.append(lista2[-1])
+    listadefi.append(lista3[-1])
     return listadefi
+
+listadeprueba = ['v', 'nv', 'v', 'v', 'v', 'nv'] #Para probar si funciona markov
+lista_probs = markov(['v', 'nv', 'v', 'v', 'v', 'nv'])
+print("La probabilidad de que salga una secuencia del tipo "+str(listadeprueba)+" es de "+str((lista_probs[0]+lista_probs[1]+lista_probs[2])))
