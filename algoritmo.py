@@ -51,4 +51,10 @@ prob_llu = dic_prob_tiempo['rain']/total
 prob_niev = dic_prob_tiempo['snow']/total
 #matriz probailiades condicionadas
 m_t = [[0.6, 0.2, 0.1], [0.5, 0.4, 0.1], [0.7, 0.2, 0.1]]
-#probabilidades relacionadas(definen el modelo de markov)
+#definimos las probabilidades relacionadas(definen el modelo de markov)
+v_s = 0.1
+nv_s = 0.9
+v_ll = 0.7
+nv_ll = 0.3
+v_n = 0.4
+nv_n = 0.6
