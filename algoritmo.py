@@ -49,3 +49,6 @@ total = len(tiempos)
 prob_sol = dic_prob_tiempo['sun']/total
 prob_llu = dic_prob_tiempo['rain']/total
 prob_niev = dic_prob_tiempo['snow']/total
+#matriz probailiades condicionadas
+m_t = [[0.6, 0.2, 0.1], [0.5, 0.4, 0.1], [0.7, 0.2, 0.1]]
+#probabilidades relacionadas(definen el modelo de markov)
