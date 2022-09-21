@@ -82,3 +82,11 @@ class Markov: #clase que calcula la probabilidad de que ocurra una secuencia det
 listadeprueba = ['v', 'nv', 'v', 'v', 'v', 'nv'] #Para probar si funciona markov
 lista_probs = Markov.markov(['v', 'nv', 'v', 'v', 'v', 'nv'])
 print("La probabilidad de que salga una secuencia del tipo "+str(listadeprueba)+" es de "+str((lista_probs[0]+lista_probs[1]+lista_probs[2])))
+
+nsol = Markov.tiempos.count("sun")
+nlluvia = Markov.tiempos.count("rain")
+nnieve = Markov.tiempos.count("snow")
+
+eje_x = ["Sol", "Lluvia", "Nieve"]; eje_y = [nsol, nlluvia, nnieve]
+plt.bar(eje_x, eje_y, color = ["y","lightblue","grey"]) ; plt.ylabel("Frecuencia") ; plt.xlabel("Clima") ; plt.title("El tiempo en Seattle") ; plt.savefig("2a Parte/imagen_grafico/El tiempo en Seattle.jpg"); plt.show()
+plt.savefig("2a Parte/imagen_grafico/El tiempo en Seattle.png")
