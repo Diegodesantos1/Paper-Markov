@@ -6,11 +6,6 @@ from collections import Counter
 def leerArchivo(csv):
         df = pd.read_csv(csv)
         return df
-class Police:
-    def grafico(df):
-        df['Year'].value_counts().plot(kind='bar')
-        plt.title('Muertes por año') ; plt.xlabel('Año') ; plt.ylabel('Muertes'); plt.show()
-    grafico(leerArchivo('police_deaths.csv'))
 
 class Markov: #clase que calcula la probabilidad de que ocurra una secuencia determinada por probabilidades condicionadas
     tiempos = leerArchivo('2a Parte/seattle-weather.csv')['weather'].tolist()
