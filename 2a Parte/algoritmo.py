@@ -2,31 +2,15 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
-# leemos el archivo csv
+
 def leerArchivo(csv):
-    df = pd.read_csv(csv)
-    return df
-
-#print(leerArchivo('police_deaths.csv'))
-df1 = leerArchivo('police_deaths.csv')
-frecuencia = df1.groupby(['Year']).count()
-#print(frecuencia)
-
-frecuencia.plot(kind='line', color='black')
-#plt.show()
-
-def k9Unit(df):
-    df = df[df['K9_Unit'] == 1]
-    return df
-
-#print(k9Unit(df1))
-df2 = k9Unit(df1)
-
-def muertesPorAño(df):
-    df = df.groupby(['Year']).count()
-    return df
-
-#print(muertesPorAño(df2))
+        df = pd.read_csv(csv)
+        return df
+class Police:
+    def grafico(df):
+        df['Year'].value_counts().plot(kind='bar')
+        plt.title('Muertes por año') ; plt.xlabel('Año') ; plt.ylabel('Muertes'); plt.show()
+    grafico(leerArchivo('police_deaths.csv'))
 
 class Markov: #clase que calcula la probabilidad de que ocurra una secuencia determinada por probabilidades condicionadas
     tiempos = leerArchivo('2a Parte/seattle-weather.csv')['weather'].tolist()
