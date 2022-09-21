@@ -29,7 +29,7 @@ def muertesPorAño(df):
 #print(muertesPorAño(df2))
 
 
-tiempos = leerArchivo('seattle-weather.csv')['weather'].tolist()
+tiempos = leerArchivo('2a Parte/seattle-weather.csv')['weather'].tolist()
 del(tiempos[0])
 tiempo = []
 for causa in tiempos:
