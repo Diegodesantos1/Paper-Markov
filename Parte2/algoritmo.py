@@ -8,13 +8,18 @@ def leerArchivo(csv):
         return df
 
 class Markov: #clase que calcula la probabilidad de que ocurra una secuencia determinada por probabilidades condicionadas
+    
+    def leerArchivo(csv):
+        df = pd.read_csv(csv)
+        return df
+    
     tiempos = leerArchivo('Parte2/Industry4.0.csv')['weather'].tolist()
     del(tiempos[0])
     tiempo = []
     for causa in tiempos:
         if causa not in tiempo:
             tiempo.append(causa)
-    print(tiempo)
+    # print(tiempo)
 
     conteo=Counter(tiempos)
 
@@ -23,7 +28,7 @@ class Markov: #clase que calcula la probabilidad de que ocurra una secuencia det
         valor=conteo[clave]
         if valor != 1:
             dic_prob_tiempo[clave] = valor
-    print(dic_prob_tiempo)
+    # print(dic_prob_tiempo)
     total = len(tiempos)
     prob_sol = dic_prob_tiempo['sun']/total
     prob_llu = dic_prob_tiempo['rain']/total
@@ -72,16 +77,16 @@ class Markov: #clase que calcula la probabilidad de que ocurra una secuencia det
         listadefi.append(lista2[-1])
         listadefi.append(lista3[-1])
         return listadefi
+    def test():
+        #Comprobamos con una secuencia cualquiera de nuestro markov si funciona
+        listadeprueba = ['v', 'nv', 'v', 'v', 'v', 'nv'] #Para probar si funciona markov
+        lista_probs = Markov.markov(['v', 'nv', 'v', 'v', 'v', 'nv'])
+        print("La probabilidad de que salga una secuencia del tipo "+str(listadeprueba)+" es de "+str((lista_probs[0]+lista_probs[1]+lista_probs[2])))
 
-#Comprobamos con una secuencia cualquiera de nuestro markov si funciona
-listadeprueba = ['v', 'nv', 'v', 'v', 'v', 'nv'] #Para probar si funciona markov
-lista_probs = Markov.markov(['v', 'nv', 'v', 'v', 'v', 'nv'])
-print("La probabilidad de que salga una secuencia del tipo "+str(listadeprueba)+" es de "+str((lista_probs[0]+lista_probs[1]+lista_probs[2])))
+        nsol = Markov.tiempos.count("sun")
+        nlluvia = Markov.tiempos.count("rain")
+        nnieve = Markov.tiempos.count("snow")
 
-nsol = Markov.tiempos.count("sun")
-nlluvia = Markov.tiempos.count("rain")
-nnieve = Markov.tiempos.count("snow")
-
-eje_x = ["Sol", "Lluvia", "Nieve"]; eje_y = [nsol, nlluvia, nnieve]
-plt.bar(eje_x, eje_y, color = ["y","lightblue","grey"]) ; plt.ylabel("Frecuencia") ; plt.xlabel("Clima") ; plt.title("El tiempo en Seattle") ; plt.savefig("Parte2/imagen_grafico/El tiempo en Seattle.jpg"); plt.show()
-plt.savefig("Parte2/imagen_grafico/El tiempo en Seattle.png")
+        eje_x = ["Sol", "Lluvia", "Nieve"]; eje_y = [nsol, nlluvia, nnieve]
+        plt.bar(eje_x, eje_y, color = ["y","lightblue","grey"]) ; plt.ylabel("Frecuencia") ; plt.xlabel("Clima") ; plt.title("El tiempo en Seattle") ; plt.savefig("Parte2/imagen_grafico/El tiempo en Seattle.jpg"); plt.show()
+        plt.savefig("Parte2/imagen_grafico/El tiempo en Seattle.png")
