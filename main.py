@@ -1,10 +1,13 @@
 import pandas as pnd
+import JMPEstadisticas as jmp
 import numpy as np
 
-if __name__ == '__main__':
-        datos = pnd.read_csv("2a Parte/seattle-weather.csv", header=0 , sep =",")
-        lista_tiempo = list(datos["weather"])
-        observaciones = pnd.DataFrame({'TIEMPO': lista_tiempo})
+variables = ["precipitation","temp_max","temp_min","wind"]
+for i in range (4):
+        variable = variables.pop(0)
+        datos = pnd.read_csv("Parte2/seattle-weather.csv", header=0 , sep =",")
+        lista_tempmax = list(datos[f"{variable}"])
+        observaciones = pnd.DataFrame({'VARIABLE': lista_tempmax})
         #--- ANALISIS DE UNA CARACTERISTICA ---
-        stats = jmp.JMPEstadisticas(observaciones['TIEMPO'])
+        stats = jmp.JMPEstadisticas(observaciones['VARIABLE'])
         stats.analisisCaracteristica()

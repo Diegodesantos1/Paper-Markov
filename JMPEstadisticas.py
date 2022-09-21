@@ -1,4 +1,4 @@
-"""from collections import Counter
+from collections import Counter
 from math import *
 import matplotlib.pyplot as plt
 
@@ -208,4 +208,4 @@ class JMPEstadisticas:
         print("95 % de los valores de las observaciones se sitúan entre " + str(media - (desviacionTipica * 2)) + " y " + str(
             media + (desviacionTipica * 2)))
         print("99 % de los valores de las observaciones se sitúan entre " + str(media - (desviacionTipica * 3)) + " y " + str(
-            media + (desviacionTipica * 3)))"""
+            media + (desviacionTipica * 3)))

@@ -8,7 +8,7 @@ def leerArchivo(csv):
         return df
 
 class Markov: #clase que calcula la probabilidad de que ocurra una secuencia determinada por probabilidades condicionadas
-    tiempos = leerArchivo('2a Parte/seattle-weather.csv')['weather'].tolist()
+    tiempos = leerArchivo('Parte2/seattle-weather.csv')['weather'].tolist()
     del(tiempos[0])
     tiempo = []
     for causa in tiempos:
@@ -83,5 +83,5 @@ nlluvia = Markov.tiempos.count("rain")
 nnieve = Markov.tiempos.count("snow")
 
 eje_x = ["Sol", "Lluvia", "Nieve"]; eje_y = [nsol, nlluvia, nnieve]
-plt.bar(eje_x, eje_y, color = ["y","lightblue","grey"]) ; plt.ylabel("Frecuencia") ; plt.xlabel("Clima") ; plt.title("El tiempo en Seattle") ; plt.savefig("2a Parte/imagen_grafico/El tiempo en Seattle.jpg"); plt.show()
-plt.savefig("2a Parte/imagen_grafico/El tiempo en Seattle.png")
+plt.bar(eje_x, eje_y, color = ["y","lightblue","grey"]) ; plt.ylabel("Frecuencia") ; plt.xlabel("Clima") ; plt.title("El tiempo en Seattle") ; plt.savefig("Parte2/imagen_grafico/El tiempo en Seattle.jpg"); plt.show()
+plt.savefig("Parte2/imagen_grafico/El tiempo en Seattle.png")
