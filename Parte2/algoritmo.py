@@ -83,6 +83,6 @@ class Markov: #clase que calcula la probabilidad de que ocurra una secuencia det
         nlluvia = Markov.tiempos.count("rain")
         nnieve = Markov.tiempos.count("snow")
 
-        eje_x = ["Sol", "Lluvia", "Nieve"]; eje_y = [nsol, nlluvia, nnieve]
-        plt.bar(eje_x, eje_y, color = ["y","lightblue","grey"]) ; plt.ylabel("Frecuencia") ; plt.xlabel("Clima") ; plt.title("El tiempo en Seattle") ; plt.savefig("Parte2/imagen_grafico/El tiempo en Seattle.jpg"); plt.show()
+        eje_x = ["Sol", "Lluv", "Niev"]; eje_y = [nsol, nlluvia, nnieve]
+        plt.bar(eje_x, eje_y, color = ["y","lightblue","grey"]) ; plt.ylabel("NºProductos") ; plt.xlabel("Fábricas") ; plt.title("Nº de Productos por Fábrica") ; plt.savefig("Parte2/imagen_grafico/El tiempo en Seattle.jpg"); plt.show()
         plt.savefig("Parte2/imagen_grafico/El tiempo en Seattle.png")
