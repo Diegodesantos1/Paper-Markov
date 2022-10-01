@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 lista1 = [0, 2, 4 ,6]
-lista2 = [1, 3, 5, 7]
+lista2 = [1, 5, 3, 7]
 
 
 def dtw(a, b):
