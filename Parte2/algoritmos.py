@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 lista1 = [1, 4, 2, 1]
-lista2 = [3, 1, 1, 3,7]
+lista2 = [3, 1, 1, 3]
 
 def dtw(a, b):
     global matrix, n, m
@@ -42,10 +42,17 @@ def movimiento(m, signo, i, j): # función para obtener el movimiento dentro de 
     elif signo == 2: # si el signo es 2, el movimiento es horizontal hacia la izquierda
         return m[i][j-1]
 
+# funcion para registrar el indice de los valores que luego saco en el camino
+indice = []
+def indices(m, i, j):
+    indice.append([i, j])
+    return indice
+
 recorrido = []
 def camino(m, i, j): # función para obtener el camino
     if i == 0 and j == 0: # si i y j son 0 paramos
         recorrido.append(matrix[i][j])
+        indices(m, i, j)
     else:
         # obtengo los valores de la matriz en la posición i,j
         diagonal, vertical, horizontal = m[i-1][j-1], m[i-1][j], m[i][j-1]
@@ -54,18 +61,22 @@ def camino(m, i, j): # función para obtener el camino
         # si el valor mínimo es el de la diagonal, el movimiento es diagonal
         if minimo == diagonal:
             recorrido.append(matrix[i][j])
+            indices(m, i, j)
             camino(m, i-1, j-1)
         # si el valor mínimo es el de la vertical, el movimiento es vertical
         elif minimo == vertical:
             recorrido.append(matrix[i][j])
+            indices(m, i, j)
             camino(m, i-1, j)
         # si el valor mínimo es el de la horizontal, el movimiento es horizontal
         elif minimo == horizontal:
             recorrido.append(matrix[i][j])
+            indices(m, i, j)
             camino(m, i, j-1)
     return recorrido
 print(camino(matrix, n, m))
 
+print(indice)
         
 """
 listaplus5 = []
