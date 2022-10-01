@@ -75,19 +75,15 @@ def camino(m, i, j): # función para obtener el camino
             camino(m, i, j-1)
     return recorrido
 print(camino(matrix, n, m))
-
 print(indice)
-        
-"""
 listaplus5 = []
 
 for i in range(len(lista1)): # este bucle es para que no se me solapen las lineas
     listaplus5.append(lista1[i]+(max(lista1+lista2)))
 
-Ahora usando matplotlib muestro las listas en un grafico
 # dibuja la lista 1 
 plt.plot(listaplus5, marker='o')
 # dibuja la lista 2
 plt.plot(lista2, marker='o')
 # las muestra
-plt.show()"""
+plt.show()
