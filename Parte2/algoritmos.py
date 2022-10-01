@@ -85,6 +85,8 @@ def alineados(indice):
         alineados.append([lista1[i[0]-1], lista2[i[1]-1]])
         # invierto la lista para que me quede como me interesa
     alineados = alineados[::-1]
+    # elimino el primer elemento porque es [0,0]
+    alineados.pop(0)
     return alineados
 
 print(alineados(indice))
