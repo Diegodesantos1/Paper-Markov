@@ -40,6 +40,11 @@ def movimiento(m, signo, i, j): # función para obtener el movimiento dentro de 
         return m[i-1][j]
     elif signo == 3: # si el signo es 3, el movimiento es horizontal hacia la izquierda
         return m[i][j-1]
+for i in range(n+1,0,-1): # recorro la matriz de abajo hacia arriba
+    for j in range(m+1,0,-1): # recorro la matriz de derecha a izquierda
+        # obtengo una lista con los valores minimos que me interesan
+        lista_valores = [matrix[i-1][j-1], matrix[i-1][j], matrix[i][j-1]] # el primer elemento de la lista es el diagonal, 
+        #el segundo el vertical y el tercero el horizontal
         
 """
 listaplus5 = []
