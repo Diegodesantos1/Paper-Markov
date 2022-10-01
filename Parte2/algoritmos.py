@@ -9,9 +9,10 @@ def dtw(a, b):
     matrix = np.zeros((n+1, m+1)) # creo matriz de ceros
     matrix[0, 1:], matrix[1:, 0] = np.inf, np.inf # establezco los infinitos
     
-    for i in range(1,n+1):
-        for j in range(1,m+1):
-            matrix[i][j] = 5
+    for i in range(1,n+1): # recorro filas
+        for j in range(1,m+1): # recorro columnas
+            list_values = [matrix[i-1][j-1],matrix[i-1][j],matrix[i][j-1]]
+            matrix[i][j] = abs(a[i-1]-b[j-1]) + min(list_values)
     
     matrix = matrix[::-1] # dejo colocada como me interesa personalmente la matriz para poder verla bien
 
