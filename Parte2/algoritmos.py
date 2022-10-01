@@ -17,9 +17,9 @@ def dtw(a, b):
         for j in range(1,m+1): # recorro columnas
             list_values = [matrix[i-1][j-1],matrix[i-1][j],matrix[i][j-1]] # obtengo una lista con los valores minimos que me interesan
             matrix[i][j] = abs(a[i-1]-b[j-1]) + min(list_values) # calculo la distancia entre a(i) y b(j) y le sumo el valor minimo de la lista
-    
+    alignment_cost = matrix[len(a)][len(b)] # añado el alignment cost
     matrix = matrix[::-1] # dejo colocada como me interesa personalmente la matriz para poder verla bien
+    
+    return matrix, alignment_cost # imprimo la matriz para ver lo que devuelve
 
-    print(matrix), print("matriz nxm") # imprimo la matriz para ver lo que devuelve
-
-dtw(lista1, lista2)
+print(dtw(lista1, lista2))
