@@ -34,10 +34,13 @@ def dtw(a, b):
 
 
 print(dtw(lista1, lista2))
-# dibuja la lista 1 
+
 listaplus5 = []
+
 for i in range(len(lista1)): # este bucle es para que no se me solapen las lineas
     listaplus5.append(lista1[i]+(max(lista1+lista2)))
+
+# dibuja la lista 1 
 plt.plot(listaplus5, marker='o')
 # dibuja la lista 2
 plt.plot(lista2, marker='o')
