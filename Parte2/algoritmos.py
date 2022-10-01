@@ -33,10 +33,13 @@ def dtw(a, b):
 
 print(dtw(lista1, lista2))
 
-for i in range(n+1, 0, -1):
-    for j in range(m+1, 0, -1):
-        print(matrix[i][j], end=" ")
-    print()
+def movimiento(m, signo, i, j): # función para obtener el movimiento dentro de la matriz
+    if signo == 1: # si el signo es 1, el movimiento es diagonal
+        return m[i-1][j-1]
+    elif signo == 2: # si el signo es 2, el movimiento es vertical hacia arriba
+        return m[i-1][j]
+    elif signo == 3: # si el signo es 3, el movimiento es horizontal hacia la izquierda
+        return m[i][j-1]
         
 """
 listaplus5 = []
