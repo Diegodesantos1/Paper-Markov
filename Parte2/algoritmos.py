@@ -76,6 +76,17 @@ def camino(m, i, j): # función para obtener el camino
     return recorrido
 print(camino(matrix, n, m))
 print(indice)
+
+# siendo dentro de la lista indice en cada sublista el primer valor el indice de la lista1 y el segundo el de la lista2
+# creo una funcion que me diga que valores de la lista1 y lista2 son los que se han alineado
+def alineados(indice):
+    alineados = []
+    for i in indice:
+        alineados.append([lista1[i[0]-1], lista2[i[1]-1]])
+    return alineados
+    
+print(alineados(indice))
+
 listaplus5 = []
 
 for i in range(len(lista1)): # este bucle es para que no se me solapen las lineas
@@ -86,4 +97,4 @@ plt.plot(listaplus5, marker='o')
 # dibuja la lista 2
 plt.plot(lista2, marker='o')
 # las muestra
-plt.show()
+#plt.show()
