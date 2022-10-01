@@ -34,17 +34,36 @@ def dtw(a, b):
 print(dtw(lista1, lista2))
 
 def movimiento(m, signo, i, j): # función para obtener el movimiento dentro de la matriz
-    if signo == 1: # si el signo es 1, el movimiento es diagonal
+    if signo == 0: # si el signo es 0, el movimiento es diagonal
         return m[i-1][j-1]
-    elif signo == 2: # si el signo es 2, el movimiento es vertical hacia arriba
+    elif signo == 1: # si el signo es 1, el movimiento es vertical hacia arriba
         return m[i-1][j]
-    elif signo == 3: # si el signo es 3, el movimiento es horizontal hacia la izquierda
+    elif signo == 2: # si el signo es 2, el movimiento es horizontal hacia la izquierda
         return m[i][j-1]
-for i in range(n+1,0,-1): # recorro la matriz de abajo hacia arriba
-    for j in range(m+1,0,-1): # recorro la matriz de derecha a izquierda
+print(matrix[n][m])
+for i in range(n,0,-1): # recorro la matriz de abajo hacia arriba
+    for j in range(m,0,-1): # recorro la matriz de derecha a izquierda
         # obtengo una lista con los valores minimos que me interesan
         lista_valores = [matrix[i-1][j-1], matrix[i-1][j], matrix[i][j-1]] # el primer elemento de la lista es el diagonal, 
         #el segundo el vertical y el tercero el horizontal
+        # selecciono el valor minimo de la lista
+        minimo = min(lista_valores)
+        # obtengo el indice del valor minimo de la lista
+        indice = lista_valores.index(minimo)
+        print(indice)
+        # si el valor minimo es el diagonal, el movimiento es diagonal
+        if minimo == matrix[i-1][j-1]:
+            print("diagonal")
+            print(movimiento(matrix, 0, i, j))
+        # si el valor minimo es el vertical, el movimiento es vertical
+        elif minimo == matrix[i-1][j]:
+            print("vertical")
+            print(movimiento(matrix, 1, i, j))    
+        # si el valor minimo es el horizontal, el movimiento es horizontal
+        elif minimo == matrix[i][j-1]:
+            print("horizontal")
+            print(movimiento(matrix, 2, i, j))
+
         
 """
 listaplus5 = []
