@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 lista1 = [1, 4, 2, 1]
-lista2 = [3, 1, 1, 3]
+lista2 = [3, 1, 1, 3,7]
 
 def dtw(a, b):
     global matrix, n, m
@@ -26,9 +26,10 @@ def dtw(a, b):
     # lo normalizo dividiendo entre la suma de las longitudes de las listas
     normalized_alignment_cost = alignment_cost/(n+m)
     # dejo colocada como me interesa personalmente la matriz para poder verla bien
+    matrixview = matrix[::-1]
 
     # imprimo la matriz para ver lo que devuelve
-    return matrix, alignment_cost, normalized_alignment_cost
+    return matrixview, alignment_cost, normalized_alignment_cost
 
 
 print(dtw(lista1, lista2))
@@ -40,29 +41,30 @@ def movimiento(m, signo, i, j): # función para obtener el movimiento dentro de 
         return m[i-1][j]
     elif signo == 2: # si el signo es 2, el movimiento es horizontal hacia la izquierda
         return m[i][j-1]
-print(matrix[n][m])
-for i in range(n,0,-1): # recorro la matriz de abajo hacia arriba
-    for j in range(m,0,-1): # recorro la matriz de derecha a izquierda
-        # obtengo una lista con los valores minimos que me interesan
-        lista_valores = [matrix[i-1][j-1], matrix[i-1][j], matrix[i][j-1]] # el primer elemento de la lista es el diagonal, 
-        #el segundo el vertical y el tercero el horizontal
-        # selecciono el valor minimo de la lista
-        minimo = min(lista_valores)
-        # obtengo el indice del valor minimo de la lista
-        indice = lista_valores.index(minimo)
-        print(indice)
-        # si el valor minimo es el diagonal, el movimiento es diagonal
-        if minimo == matrix[i-1][j-1]:
-            print("diagonal")
-            print(movimiento(matrix, 0, i, j))
-        # si el valor minimo es el vertical, el movimiento es vertical
-        elif minimo == matrix[i-1][j]:
-            print("vertical")
-            print(movimiento(matrix, 1, i, j))    
-        # si el valor minimo es el horizontal, el movimiento es horizontal
-        elif minimo == matrix[i][j-1]:
-            print("horizontal")
-            print(movimiento(matrix, 2, i, j))
+
+recorrido = []
+def camino(m, i, j): # función para obtener el camino
+    if i == 0 and j == 0: # si i y j son 0 paramos
+        recorrido.append(matrix[i][j])
+    else:
+        # obtengo los valores de la matriz en la posición i,j
+        diagonal, vertical, horizontal = m[i-1][j-1], m[i-1][j], m[i][j-1]
+        # obtengo el valor mínimo de los 3
+        minimo = min(diagonal, vertical, horizontal)
+        # si el valor mínimo es el de la diagonal, el movimiento es diagonal
+        if minimo == diagonal:
+            recorrido.append(matrix[i][j])
+            camino(m, i-1, j-1)
+        # si el valor mínimo es el de la vertical, el movimiento es vertical
+        elif minimo == vertical:
+            recorrido.append(matrix[i][j])
+            camino(m, i-1, j)
+        # si el valor mínimo es el de la horizontal, el movimiento es horizontal
+        elif minimo == horizontal:
+            recorrido.append(matrix[i][j])
+            camino(m, i, j-1)
+    return recorrido
+print(camino(matrix, n, m))
 
         
 """
