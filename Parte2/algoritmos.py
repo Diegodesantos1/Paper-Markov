@@ -2,11 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 lista1 = [1, 4, 2, 1]
-lista2 = [3, 1, 1, 3, 4, 2, 1]
-
+lista2 = [3, 1, 1, 3]
 
 def dtw(a, b):
-
+    global matrix, n, m
     # obtengo n (filas) y m (columnas) que son las dimensiones de las listas introducidas
     n, m = len(a), len(b)
     matrix = np.zeros((n+1, m+1))  # creo matriz de ceros
@@ -27,7 +26,6 @@ def dtw(a, b):
     # lo normalizo dividiendo entre la suma de las longitudes de las listas
     normalized_alignment_cost = alignment_cost/(n+m)
     # dejo colocada como me interesa personalmente la matriz para poder verla bien
-    matrix = matrix[::-1]
 
     # imprimo la matriz para ver lo que devuelve
     return matrix, alignment_cost, normalized_alignment_cost
@@ -35,13 +33,21 @@ def dtw(a, b):
 
 print(dtw(lista1, lista2))
 
+for i in range(n+1, 0, -1):
+    for j in range(m+1, 0, -1):
+        print(matrix[i][j], end=" ")
+    print()
+        
+"""
 listaplus5 = []
 
 for i in range(len(lista1)): # este bucle es para que no se me solapen las lineas
     listaplus5.append(lista1[i]+(max(lista1+lista2)))
 
+Ahora usando matplotlib muestro las listas en un grafico
 # dibuja la lista 1 
 plt.plot(listaplus5, marker='o')
 # dibuja la lista 2
 plt.plot(lista2, marker='o')
-plt.show()
+# las muestra
+plt.show()"""
