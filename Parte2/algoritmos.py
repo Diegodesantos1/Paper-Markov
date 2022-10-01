@@ -4,10 +4,11 @@ lista1 = [1,4,2,1]
 lista2 = [3,1,1,3]
 
 def dtw(a, b):
-    n, m = len(a), len(b)
-    matrix = np.zeros((n+1, m+1))
-    matrix[0, 1:], matrix[1:, 0] = np.inf, np.inf
+    n, m = len(a), len(b) # obtengo n y m que son las dimensiones de las listas introducidas
+    matrix = np.zeros((n+1, m+1)) # creo matriz de ceros
+    matrix[0, 1:], matrix[1:, 0] = np.inf, np.inf # establezco los infinitos
 
-    print(matrix)
+
+    print(matrix) # imprimo la matriz para ver lo que devuelve
 
 dtw(lista1, lista2)
