@@ -1,8 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-lista1 = [1, 4, 2, 1]
-lista2 = [3, 1, 1, 3]
+lista1 = [0, 2, 4 ,6]
+lista2 = [1, 3, 5, 7]
+
 
 def dtw(a, b):
     global matrix, n, m
@@ -80,14 +81,15 @@ print(indice)
 # siendo dentro de la lista indice en cada sublista el primer valor el indice de la lista1 y el segundo el de la lista2
 # creo una funcion que me diga que valores de la lista1 y lista2 son los que se han alineado
 def alineados(indice):
-    alineados = []
+    global lista_alineados 
+    lista_alineados = []
     for i in indice:
-        alineados.append([lista1[i[0]-1], lista2[i[1]-1]])
+        lista_alineados.append([lista1[i[0]-1], lista2[i[1]-1]])
         # invierto la lista para que me quede como me interesa
-    alineados = alineados[::-1]
+    lista_alineados = lista_alineados[::-1]
     # elimino el primer elemento porque es [0,0]
-    alineados.pop(0)
-    return alineados
+    lista_alineados.pop(0)
+    return lista_alineados
 
 print(alineados(indice))
 
@@ -97,8 +99,13 @@ for i in range(len(lista1)): # este bucle es para que no se me solapen las linea
     listaplus5.append(lista1[i]+(max(lista1+lista2)))
 
 # dibuja la lista 1 
-plt.plot(listaplus5, marker='o')
+plt.plot(lista1, marker='o')
 # dibuja la lista 2
 plt.plot(lista2, marker='o')
+
+#solo funciona cuando no se repiten los valores en las listas
+for i in range(len(lista_alineados)): # dibuja las lineas
+    plt.plot([lista1.index(lista_alineados[i][0]),lista2.index(lista_alineados[i][1])], [lista_alineados[i][0], lista_alineados[i][1]], color='red')
+
 # las muestra
-#plt.show()
+plt.show()
