@@ -5,7 +5,6 @@ lista1, lista2 = [2, 0, 3, 8, 7, 2], [1, 3, 9, 3, 1]
 
 def dtw(a, b):
     global matrix, n, m
-    # obtengo n (filas) y m (columnas) que son las dimensiones de las listas introducidas
     n, m = len(a), len(b)
     matrix = np.zeros((n+1, m+1))  # creo matriz de ceros
     matrix[0, 1:], matrix[1:, 0] = np.inf, np.inf  # establezco los infinitos
