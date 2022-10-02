@@ -17,7 +17,7 @@ Hemos traducido el pdf original y lo hemos pasado a LaTeX, utilizando Overleaf y
 
 <h2 align="center"> Parte 2: Programar DTW</h2>
 
-Para programar este algoritmo, primero nos hemos tenido que documental a través de diferentes medios para luego poder programarlo de la forma más óptima o sobre todo original.
+Para programar este algoritmo, primero nos hemos tenido que documental a través de diferentes medios para luego poder programarlo de la forma más óptima y sobre todo original.
 
 Hemos creado el código en base a listas de números lo cual sería fácilmente extrapolable a los datos de por ejemplo 2 datasets y tratar de ver la relación o no que haya entre ellos. Posteriormente no solo hemos obtenido la matriz de coste sino que también el llamado coste, también lo hemos normalizado y una vez obtuvimos todos esos datos conseguimos encontrar el camino más óptimo el cual también lo representamos visualmente empleando la librería de matplotlib.
 
@@ -112,6 +112,12 @@ for i in range(len(indice)):  # dibuja las lineas
 plt.savefig("Parte2/imagen_grafico/dtw.png")
 plt.show()
 ```
+
+Una muestra de su ejecución podría ser esta en la cual se basa en las listas [21, 21, 16, 0, 9, 9, 17, 3, 0, 4] y [21, 7, 25, 11, 1, 12, 10, 10, 5, 10] y obtenemos lo siguiente:
+
+<p align="center">
+  <img src="https://github.com/Diegodesantos1/Paper-Markov/blob/c823400ed78be31f7aabc48723b9a77ab815fed0/Parte2/imagen_grafico/dtw.png"/>
+</p>
 
 <h2 align="center"> Parte 3: Programar Markov</h2>
 
