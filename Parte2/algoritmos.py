@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-lista1 = [0, 2, 4 ,6]
-lista2 = [1, 5, 3, 7]
-
+lista1, lista2 = [0,1,1], [0,3,3,3]
 
 def dtw(a, b):
     global matrix, n, m
@@ -23,15 +21,9 @@ def dtw(a, b):
             # calculo la distancia entre a(i) y b(j) y le sumo el valor minimo de la lista
             matrix[i][j] = abs(a[i-1]-b[j-1]) + min(list_values)
 
-    alignment_cost = matrix[len(a)][len(b)]  # añado el alignment cost
-    # lo normalizo dividiendo entre la suma de las longitudes de las listas
-    normalized_alignment_cost = alignment_cost/(n+m)
-    # dejo colocada como me interesa personalmente la matriz para poder verla bien
-    matrixview = matrix[::-1]
-
+    alignment_cost, normalized_alignment_cost, matrixview = matrix[len(a)][len(b)], matrix[len(a)][len(b)]/(n+m), matrix[::-1] 
     # imprimo la matriz para ver lo que devuelve
     return matrixview, alignment_cost, normalized_alignment_cost
-
 
 print(dtw(lista1, lista2))
 
@@ -46,14 +38,13 @@ def movimiento(m, signo, i, j): # función para obtener el movimiento dentro de 
 # funcion para registrar el indice de los valores que luego saco en el camino
 indice = []
 def indices(m, i, j):
-    indice.append([i, j])
+    indice.append([i, j]), indice.sort()
     return indice
 
 recorrido = []
 def camino(m, i, j): # función para obtener el camino
     if i == 0 and j == 0: # si i y j son 0 paramos
-        recorrido.append(matrix[i][j])
-        indices(m, i, j)
+        return recorrido
     else:
         # obtengo los valores de la matriz en la posición i,j
         diagonal, vertical, horizontal = m[i-1][j-1], m[i-1][j], m[i][j-1]
@@ -61,22 +52,15 @@ def camino(m, i, j): # función para obtener el camino
         minimo = min(diagonal, vertical, horizontal)
         # si el valor mínimo es el de la diagonal, el movimiento es diagonal
         if minimo == diagonal:
-            recorrido.append(matrix[i][j])
-            indices(m, i, j)
-            camino(m, i-1, j-1)
+            recorrido.append(matrix[i][j]), indices(m, i, j), camino(m, i-1, j-1)
         # si el valor mínimo es el de la vertical, el movimiento es vertical
         elif minimo == vertical:
-            recorrido.append(matrix[i][j])
-            indices(m, i, j)
-            camino(m, i-1, j)
+            recorrido.append(matrix[i][j]), indices(m, i, j), camino(m, i-1, j)
         # si el valor mínimo es el de la horizontal, el movimiento es horizontal
         elif minimo == horizontal:
-            recorrido.append(matrix[i][j])
-            indices(m, i, j)
-            camino(m, i, j-1)
-    return recorrido
-print(camino(matrix, n, m))
-print(indice)
+            recorrido.append(matrix[i][j]),indices(m, i, j),camino(m, i, j-1)
+
+camino(matrix, n, m),print(indice)
 
 # siendo dentro de la lista indice en cada sublista el primer valor el indice de la lista1 y el segundo el de la lista2
 # creo una funcion que me diga que valores de la lista1 y lista2 son los que se han alineado
@@ -85,27 +69,16 @@ def alineados(indice):
     lista_alineados = []
     for i in indice:
         lista_alineados.append([lista1[i[0]-1], lista2[i[1]-1]])
-        # invierto la lista para que me quede como me interesa
     lista_alineados = lista_alineados[::-1]
-    # elimino el primer elemento porque es [0,0]
-    lista_alineados.pop(0)
     return lista_alineados
 
 print(alineados(indice))
 
-listaplus5 = []
-
-for i in range(len(lista1)): # este bucle es para que no se me solapen las lineas
-    listaplus5.append(lista1[i]+(max(lista1+lista2)))
-
-# dibuja la lista 1 
+# dibuja las series
 plt.plot(lista1, marker='o')
-# dibuja la lista 2
 plt.plot(lista2, marker='o')
 
-#solo funciona cuando no se repiten los valores en las listas
 for i in range(len(lista_alineados)): # dibuja las lineas
     plt.plot([lista1.index(lista_alineados[i][0]),lista2.index(lista_alineados[i][1])], [lista_alineados[i][0], lista_alineados[i][1]], color='red')
 
-# las muestra
 plt.show()
