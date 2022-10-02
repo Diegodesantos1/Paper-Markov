@@ -113,6 +113,12 @@ plt.savefig("Parte2/imagen_grafico/dtw.png")
 plt.show()
 ```
 
+Una muestra de su ejecución podría ser esta en la cual se basa en las listas [21, 21, 16, 0, 9, 9, 17, 3, 0, 4] y [21, 7, 25, 11, 1, 12, 10, 10, 5, 10] y obtenemos lo siguiente:
+
+<p align="center">
+  <img src="https://github.com/Diegodesantos1/Paper-Markov/blob/c823400ed78be31f7aabc48723b9a77ab815fed0/Parte2/imagen_grafico/dtw.png"/>
+</p>
+
 <h2 align="center"> Parte 3: Programar Markov</h2>
 
 Primero, para poder comenzar a trabajar hemos seleccionado un dataset y hemos realizado su analisis básico inicial para tener datos sobre los que trabajar.
