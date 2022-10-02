@@ -20,7 +20,6 @@ def dtw(a, b):
 
 print(dtw(lista1, lista2))
 
-# funcion para registrar el indice de los valores que luego saco en el camino
 indice,recorrido = [], []
 
 def camino(m, i, j): # función para obtener el camino
