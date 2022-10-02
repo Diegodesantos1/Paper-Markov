@@ -1,8 +1,11 @@
+from turtle import width
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pnd
+import random
 
-
+lista1, lista2 = [random.randint(0, 15) for x in range(15)], [random.randint(0, 15) for x in range(15)]
+"""
 datos = pnd.read_csv("Parte2/spanish_daily_mean_n.csv", header=0, sep=",")
 datos2 = pnd.read_csv("Parte2/us_daily_mean_n.csv", header=0, sep=",")
 
@@ -11,7 +14,7 @@ datos = datos.to_numpy()
 datos2 = datos2.to_numpy()
 lista1 = datos[:, 1]
 lista2 = datos2[:, 1]
-
+"""
 
 def dtw(a, b):
     global matrix, n, m
@@ -35,7 +38,7 @@ print(dtw(lista1, lista2))
 indice, recorrido = [], []
 lista1plus = []
 for x in range(0, len(lista1)):
-    lista1plus.append(lista1[x]+10)
+    lista1plus.append(lista1[x]+max(lista1+lista2)*2)
 
 print(len(lista1plus))
 print(len(lista2))
@@ -66,8 +69,7 @@ for i in range(len(indice)):  # dibuja las lineas
     for j in range(len(lista1plus)):
         if indice[i][0] == j+1:
             plt.plot([j, indice[i][1]-1], [lista1plus[j],
-                     lista2[indice[i][1]-1]], color='red')
+                     lista2[indice[i][1]-1]], color='red', linewidth=0.5)
 
 plt.show()
-plt.savefig("Parte2/imagen_grafico/dtw.png")
 plt.savefig("Parte2/imagen_grafico/dtw.png")
