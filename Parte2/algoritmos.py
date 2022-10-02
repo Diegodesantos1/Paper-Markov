@@ -22,35 +22,23 @@ def dtw(a, b):
 
 print(dtw(lista1, lista2))
 
-def movimiento(m, signo, i, j): # función para obtener el movimiento dentro de la matriz
-    return m[i-1][j-1] if signo == 0 else (m[i-1][j] if signo == 1 else(m[i][j-1])) 
-
 # funcion para registrar el indice de los valores que luego saco en el camino
-indice = []
-def indices(m, i, j):
-    indice.append([i, j])
-    return indice
+indice,recorrido = [], []
 
-recorrido = []
 def camino(m, i, j): # función para obtener el camino
     if i == 0 and j == 0: # si i y j son 0 paramos
         return recorrido
     else:
         diagonal, vertical, horizontal = m[i-1][j-1], m[i-1][j], m[i][j-1]
         minimo = min(diagonal, vertical, horizontal)
-        # si el valor mínimo es el de la diagonal, el movimiento es diagonal
-        if minimo == diagonal: recorrido.append(matrix[i][j]), indices(m, i, j), camino(m, i-1, j-1)
-        # si el valor mínimo es el de la vertical, el movimiento es vertical
-        elif minimo == vertical: recorrido.append(matrix[i][j]), indices(m, i, j), camino(m, i-1, j)
-        # si el valor mínimo es el de la horizontal, el movimiento es horizontal
-        elif minimo == horizontal: recorrido.append(matrix[i][j]),indices(m, i, j),camino(m, i, j-1)
+        if minimo == diagonal: recorrido.append(matrix[i][j]), indice.append([i, j]), camino(m, i-1, j-1)
+        elif minimo == vertical: recorrido.append(matrix[i][j]), indice.append([i, j]), camino(m, i-1, j)
+        elif minimo == horizontal: recorrido.append(matrix[i][j]),indice.append([i, j]),camino(m, i, j-1)
 
 camino(matrix, n, m),print(indice)
 
 lista1plus = [x + max(lista2) for x in lista1]
-# dibuja las series
 plt.plot(lista1plus, marker='o'),plt.plot(lista2, marker='o')
-
 for i in range(len(indice)): # dibuja las lineas
     for j in range(len(lista1)):
         if indice[i][0] == j+1: plt.plot([j, indice[i][1]-1], [lista1plus[j], lista2[indice[i][1]-1]], color='red')
