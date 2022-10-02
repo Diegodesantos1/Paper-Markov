@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pnd
 import random
 
-lista1, lista2 = [random.randint(0, 15) for x in range(15)], [random.randint(0, 15) for x in range(15)]
+lista1, lista2 = [random.randint(0, 25) for x in range(30)], [random.randint(0, 25) for x in range(30)]
 """
 datos = pnd.read_csv("Parte2/spanish_daily_mean_n.csv", header=0, sep=",")
 datos2 = pnd.read_csv("Parte2/us_daily_mean_n.csv", header=0, sep=",")
@@ -70,6 +70,5 @@ for i in range(len(indice)):  # dibuja las lineas
         if indice[i][0] == j+1:
             plt.plot([j, indice[i][1]-1], [lista1plus[j],
                      lista2[indice[i][1]-1]], color='red', linewidth=0.5)
-
-plt.show()
 plt.savefig("Parte2/imagen_grafico/dtw.png")
+plt.show()
