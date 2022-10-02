@@ -4,17 +4,34 @@ import matplotlib.pyplot as plt
 import pandas as pnd
 import random
 
-lista1, lista2 = [random.randint(0, 25) for x in range(30)], [random.randint(0, 25) for x in range(30)]
-"""
-datos = pnd.read_csv("Parte2/spanish_daily_mean_n.csv", header=0, sep=",")
-datos2 = pnd.read_csv("Parte2/us_daily_mean_n.csv", header=0, sep=",")
+
+def seleccion():
+    global lista1, lista2
+    eleccion = int(input("""Elija una opción: 1: listas aleatorias, 2: csv temperaturas
+    """))
+
+    if eleccion == 1:
+        len = int(input("Introduzca la longitud de las listas: "))
+        lista1, lista2 = [random.randint(0, 25) for x in range(len)], [
+            random.randint(0, 25) for x in range(len)]
+        print(lista1, lista2)
+        return lista1, lista2
+    elif eleccion == 2:
+        datos = pnd.read_csv(
+            "Parte2/spanish_daily_mean_n.csv", header=0, sep=",")
+        datos2 = pnd.read_csv("Parte2/us_daily_mean_n.csv", header=0, sep=",")
+        datos = datos.to_numpy()
+        datos2 = datos2.to_numpy()
+        lista1 = datos[:, 1]
+        lista2 = datos2[:, 1]
+        return lista1, lista2
+    else:
+        print("Opción incorrecta")
+        seleccion()
 
 
-datos = datos.to_numpy()
-datos2 = datos2.to_numpy()
-lista1 = datos[:, 1]
-lista2 = datos2[:, 1]
-"""
+seleccion()
+
 
 def dtw(a, b):
     global matrix, n, m
@@ -39,9 +56,6 @@ indice, recorrido = [], []
 lista1plus = []
 for x in range(0, len(lista1)):
     lista1plus.append(lista1[x]+max(lista1+lista2)*2)
-
-print(len(lista1plus))
-print(len(lista2))
 
 
 def camino(m, i, j):  # función para obtener el camino
