@@ -1,19 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pnd
-import random
 
-lista1 = [random.randint(0, 10) for x in range(30)]
-lista2 = [random.randint(0, 10) for x in range(30)]
-"""
-datos = pnd.read_csv("Parte2/spanish_daily_mean.csv", header=0 , sep =",")
-datos2 = pnd.read_csv("Parte2/us_daily_mean.csv", header=0 , sep =",", low_memory=False)
+
+datos = pnd.read_csv("Parte2/spanish_daily_mean_n.csv", header=0, sep=",")
+datos2 = pnd.read_csv("Parte2/us_daily_mean_n.csv", header=0, sep=",")
+
 
 datos = datos.to_numpy()
 datos2 = datos2.to_numpy()
-lista1 = datos[:,1]
-lista2 = datos2[:,1]
-"""
+lista1 = datos[:, 1]
+lista2 = datos2[:, 1]
 
 
 def dtw(a, b):
@@ -72,4 +69,5 @@ for i in range(len(indice)):  # dibuja las lineas
                      lista2[indice[i][1]-1]], color='red')
 
 plt.show()
+plt.savefig("Parte2/imagen_grafico/dtw.png")
 plt.savefig("Parte2/imagen_grafico/dtw.png")
