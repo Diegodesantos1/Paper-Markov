@@ -1,7 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pnd
+import random
 
+lista1 = [random.randint(0, 10) for x in range(30)]
+lista2 = [random.randint(0, 10) for x in range(30)]
+"""
 datos = pnd.read_csv("Parte2/spanish_daily_mean.csv", header=0 , sep =",")
 datos2 = pnd.read_csv("Parte2/us_daily_mean.csv", header=0 , sep =",", low_memory=False)
 
@@ -9,7 +13,7 @@ datos = datos.to_numpy()
 datos2 = datos2.to_numpy()
 lista1 = datos[:,1]
 lista2 = datos2[:,1]
-
+"""
 def dtw(a, b):
     global matrix, n, m
     n, m = len(a), len(b)
@@ -30,7 +34,10 @@ print(dtw(lista1, lista2))
 indice,recorrido = [], []
 lista1plus =  []
 for x in range(0, len(lista1)):
-    lista1plus.append(x+10)
+    lista1plus.append(lista1[x]+10)
+
+print(len(lista1plus))
+print(len(lista2))
 def camino(m, i, j): # función para obtener el camino
     if i == 0 and j == 0: # si i y j son 0 paramos
         return recorrido
@@ -41,10 +48,12 @@ def camino(m, i, j): # función para obtener el camino
         elif minimo == vertical: recorrido.append(matrix[i][j]), indice.append([i, j]), camino(m, i-1, j)
         elif minimo == horizontal: recorrido.append(matrix[i][j]),indice.append([i, j]),camino(m, i, j-1)
 
-camino(matrix, n, m),print(indice),plt.plot(lista1plus, marker='o'),plt.plot(lista2, marker='o')
+camino(matrix, n, m),print(indice)
+plt.plot(lista1plus, marker='o')
+plt.plot(lista2, marker='o')
 
 for i in range(len(indice)): # dibuja las lineas
-    for j in range(len(lista1)):
+    for j in range(len(lista1plus)):
         if indice[i][0] == j+1: plt.plot([j, indice[i][1]-1], [lista1plus[j], lista2[indice[i][1]-1]], color='red')
-        
+       
 plt.show()
