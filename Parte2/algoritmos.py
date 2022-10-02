@@ -69,7 +69,6 @@ def alineados(indice):
     lista_alineados = []
     for i in indice:
         lista_alineados.append([lista1[i[0]-1], lista2[i[1]-1]])
-    lista_alineados = lista_alineados[::-1]
     return lista_alineados
 
 print(alineados(indice))
