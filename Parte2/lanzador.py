@@ -6,7 +6,7 @@ from Parte2.algoritmo import Markov
 from introducir import solicitar_introducir_numero_extremo
 
 def main():
-        eleccion=solicitar_introducir_numero_extremo("¿Qué quieres ejecutar? 1: Análisis de datos, 2: Algoritmo y análisis de Markov, 3 Fin", 1, 3)
+        eleccion=solicitar_introducir_numero_extremo("¿Qué quieres ejecutar? 1: Análisis de datos, 2: Algoritmo y análisis de Markov, 3 DTW, 4 Fin", 1, 4)
         if eleccion==1:
                 variables = ["precipitation","temp_max","temp_min","wind"]
                 for i in range (4):
@@ -22,5 +22,7 @@ def main():
                 Markov.test()
                 main()
         if eleccion==3:
+                import Parte2.algoritmos
+        if eleccion==4:
                 print("Fin del programa")
                 exit()

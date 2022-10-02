@@ -20,7 +20,7 @@ def dtw(a, b):
 
 print(dtw(lista1, lista2))
 
-indice,recorrido = [], []
+indice,recorrido, lista1plus = [], [], [x + max(lista2) for x in lista1]
 
 def camino(m, i, j): # función para obtener el camino
     if i == 0 and j == 0: # si i y j son 0 paramos
@@ -32,7 +32,6 @@ def camino(m, i, j): # función para obtener el camino
         elif minimo == vertical: recorrido.append(matrix[i][j]), indice.append([i, j]), camino(m, i-1, j)
         elif minimo == horizontal: recorrido.append(matrix[i][j]),indice.append([i, j]),camino(m, i, j-1)
 
-lista1plus = [x + max(lista2) for x in lista1]
 camino(matrix, n, m),print(indice),plt.plot(lista1plus, marker='o'),plt.plot(lista2, marker='o')
 
 for i in range(len(indice)): # dibuja las lineas
