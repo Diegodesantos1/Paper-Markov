@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import random
 
-lista1, lista2 = [2, 0, 3, 8, 7, 2], [1, 3, 9, 3, 1]
+lista1, lista2 = [random.randint(0, 15) for x in range(10)], [random.randint(0, 15) for x in range(10)]
 
 def dtw(a, b):
     global matrix, n, m
@@ -20,7 +21,7 @@ def dtw(a, b):
 
 print(dtw(lista1, lista2))
 
-indice,recorrido, lista1plus = [], [], [x + max(lista2) for x in lista1]
+indice,recorrido, lista1plus = [], [], [x + (max(lista2+lista1)+max(lista2+lista1)/2) for x in lista1]
 
 def camino(m, i, j): # función para obtener el camino
     if i == 0 and j == 0: # si i y j son 0 paramos
