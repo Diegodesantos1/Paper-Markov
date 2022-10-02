@@ -1,8 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import random
+import pandas as pnd
 
-lista1, lista2 = [random.randint(0, 15) for x in range(10)], [random.randint(0, 15) for x in range(10)]
+datos = pnd.read_csv("Parte2/spanish_daily_mean.csv", header=0 , sep =",")
+datos2 = pnd.read_csv("Parte2/us_daily_mean.csv", header=0 , sep =",", low_memory=False)
+
+datos = datos.to_numpy()
+datos2 = datos2.to_numpy()
+lista1 = datos[:,1]
+lista2 = datos2[:,1]
 
 def dtw(a, b):
     global matrix, n, m
@@ -21,8 +27,10 @@ def dtw(a, b):
 
 print(dtw(lista1, lista2))
 
-indice,recorrido, lista1plus = [], [], [x + (max(lista2+lista1)+max(lista2+lista1)/2) for x in lista1]
-
+indice,recorrido = [], []
+lista1plus =  []
+for x in range(0, len(lista1)):
+    lista1plus.append(x+10)
 def camino(m, i, j): # función para obtener el camino
     if i == 0 and j == 0: # si i y j son 0 paramos
         return recorrido
