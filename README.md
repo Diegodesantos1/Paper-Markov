@@ -17,9 +17,9 @@ Hemos traducido el pdf original y lo hemos pasado a LaTeX, utilizando Overleaf y
 
 <h2 align="center"> Parte 2: Programar DTW</h2>
 
-Para programar este algoritmo, primero nos hemos tenido que documental a través de diferentes medios para luego poder programarlo de la forma más óptima y sobre todo original.
+Para programar este algoritmo, primero nos hemos tenido que documentar a través de diferentes medios para luego poder programarlo de la forma más óptima y sobre todo original.
 
-Hemos creado el código en base a listas de números lo cual sería fácilmente extrapolable a los datos de por ejemplo 2 datasets y tratar de ver la relación o no que haya entre ellos. Posteriormente no solo hemos obtenido la matriz de coste sino que también el llamado coste, también lo hemos normalizado y una vez obtuvimos todos esos datos conseguimos encontrar el camino más óptimo el cual también lo representamos visualmente empleando la librería de matplotlib.
+Hemos creado el código en base a listas de números lo cual sería fácilmente extrapolable a los datos de por ejemplo 2 datasets y tratar de ver la relación que haya o no entre ellos. Posteriormente no solo hemos obtenido la matriz de coste sino que también el llamado coste, también lo hemos normalizado y una vez obtuvimos todos esos datos conseguimos encontrar el camino más óptimo el cual también lo representamos visualmente empleando la librería de matplotlib.
 
 El código es el siguiente:
 
