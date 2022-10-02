@@ -56,4 +56,4 @@ for i in range(len(indice)): # dibuja las lineas
     for j in range(len(lista1plus)):
         if indice[i][0] == j+1: plt.plot([j, indice[i][1]-1], [lista1plus[j], lista2[indice[i][1]-1]], color='red')
        
-plt.show()
+plt.show() ; plt.savefig("Parte2/imagen_grafico/dtw.png")
